@@ -13,7 +13,7 @@ using namespace std;
 
 Classification::Classification( int rounds ) {
     for( int i = 0; i < rounds; i++ ){
-        this->rounds.push_back( new Rodada() );
+        this->rounds.push_back( new Round() );
     }
     this->criterios[ 0 ] = POINTS;
     this->criterios[ 1 ] = DIFF_GOALS;
@@ -36,7 +36,7 @@ bool Classification::insert_game( int round, Game* g ){
     if( round < 1 || round > size ){
         throw runtime_error( "insert_game: \"round\" value is invalid: " + std::to_string( round ) + "\n");
     }
-    return this->rounds.at( round-1 )->inserirJogo( g );
+    return this->rounds.at( round-1 )->insert_game( g );
 }
 
 void Classification::inserirCriteriosDesempate(CRITERIOS criterios[] ){
@@ -53,7 +53,7 @@ void Classification::process_round(int round){
     
     Game * game = 0;
     Equip * equip = 0;
-    vector< Game* > games = this->rounds.at( round-1 )->getJogos();
+    vector< Game* > games = this->rounds.at( round-1 )->get_games();
     
     for (unsigned int i = 0; i < games.size(); i++) {
         game = games[ i ];

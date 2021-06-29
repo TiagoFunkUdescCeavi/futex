@@ -9,7 +9,7 @@ using std::string;
 
 #include "Equip.h"
 #include "Game.h"
-#include "Rodada.h"
+#include "Round.h"
 
 enum CRITERIOS{
     POINTS,
@@ -39,7 +39,7 @@ private:
     static const int NUMERO_CRITERIOS_DESEMPATE = 4;
     
     vector< Equip* > equips;
-    vector< Rodada* > rounds;
+    vector< Round* > rounds;
     
     CRITERIOS criterios[ NUMERO_CRITERIOS_DESEMPATE ];
     
