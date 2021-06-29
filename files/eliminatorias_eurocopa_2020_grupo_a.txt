@@ -1,0 +1,47 @@
+alias: ing Inglaterra
+alias: tch República Tcheca
+alias: kos Kosovo
+alias: bul Bulgária
+alias: mon Montenegro
+
+campeonato: 10
+
+rodada: 1
+jogo: bul mon 1 1
+jogo: ing tch 5 0
+
+rodada: 2
+jogo: kos bul 1 1
+jogo: mon ing 1 5
+
+rodada: 3
+jogo: tch bul 2 1
+jogo: mon kos 1 1
+
+rodada: 4
+jogo: bul kos 2 3
+jogo: tch mon 3 0
+
+rodada: 5
+jogo: kos tch 2 1
+jogo: ing bul 4 0
+
+rodada: 6
+jogo: ing kos 5 3
+jogo: mon tch 0 3
+
+rodada: 7
+jogo: tch ing 2 1
+jogo: mon bul 0 0
+
+rodada: 8
+jogo: bul ing 0 6
+jogo: kos mon 2 0
+
+rodada: 9
+jogo: tch kos 2 1
+jogo: ing mon 7 0
+
+rodada: 10
+jogo: bul tch 1 0
+jogo: kos ing 0 4
