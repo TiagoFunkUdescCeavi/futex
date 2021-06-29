@@ -37,6 +37,8 @@ public:
     
 private:
     static const int NUMERO_CRITERIOS_DESEMPATE = 4;
+
+    int actual_round;
     
     vector< Equip* > equips;
     vector< Round* > rounds;

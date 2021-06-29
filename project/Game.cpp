@@ -37,7 +37,7 @@ bool Game::operator ==(Game* g){
 string Game::to_string(){
     string str = "";
     str += this->home + " ";
-    str += std::to_string( this->home_goals ) + " - ";
+    str += std::to_string( this->home_goals ) + "-";
     str += std::to_string( this->visitor_goals) + " ";
     str += this->visitor;
     return str;

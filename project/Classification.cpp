@@ -52,7 +52,8 @@ void Classification::process_round(int round){
     
     Game * game = 0;
     Equip * equip = 0;
-    vector< Game* > games = this->rounds.at( round-1 )->get_games();
+    vector< Game* > games = this->rounds[ round-1 ]->get_games();
+    this->actual_round = round - 1;;
     
     for (unsigned int i = 0; i < games.size(); i++) {
         game = games[ i ];
@@ -123,11 +124,14 @@ string Classification::to_string(){
 
 
 string Classification::to_latex(){
-    int size = this->equips.size();
-    string s = "";
-    for( int i = 0; i < size; i++ ){
-        s += std::to_string( i+1 ) + "º" + this->equips.at( i )->to_latex() + '\n';
+    string s = "Rodada " + std::to_string( this->actual_round + 1 ) + "\n";
+    vector< Game * > games = this->rounds[ this->actual_round ]->get_games();
+    for( unsigned int i = 0; i < games.size(); i++ ){
+        s += games[ i ]->to_string() + "\n";
     }
-    s += "\n\n\n";
+    for( unsigned int i = 0; i < this->equips.size(); i++ ){
+        s += std::to_string( i+1 ) + "º" + this->equips[ i ]->to_latex() + '\n';
+    }
+    s += "\n";
     return s;
 }

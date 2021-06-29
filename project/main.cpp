@@ -22,13 +22,13 @@ int main( int argc, char** argv ) {
     string input_file( argv[ 1 ] );
     string output_file( argv[ 2 ] );
     
-    FileProcessor* pl = new FileProcessor( input_file );
+    FileProcessor* fp = new FileProcessor( input_file );
     
     File* f = new File( output_file );
     
     f->write( "", true );
     try{
-        Classification* c = pl->process();
+        Classification* c = fp->process();
         for (int i = 1; i <= c->get_number_rounds(); i++) {
             c->process_round( i );
             c->sort();
