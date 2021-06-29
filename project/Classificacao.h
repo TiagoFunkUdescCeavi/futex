@@ -7,7 +7,7 @@ using std::vector;
 #include <string>
 using std::string;
 
-#include "Equipe.h"
+#include "Equip.h"
 #include "Game.h"
 #include "Rodada.h"
 
@@ -23,7 +23,7 @@ public:
     
     Classificacao( int numeroRodadas );
     
-    bool inserirEquipe( Equipe* e );
+    bool inserirEquipe( Equip* e );
     bool inserirJogo( int numeroRodada, Game* j );
     
     void inserirCriteriosDesempate( CRITERIOS criterios[] );
@@ -38,7 +38,7 @@ public:
 private:
     static const int NUMERO_CRITERIOS_DESEMPATE = 4;
     
-    vector< Equipe* > equipes;
+    vector< Equip* > equipes;
     vector< Rodada* > rodadas;
     
     CRITERIOS criterios[ NUMERO_CRITERIOS_DESEMPATE ];

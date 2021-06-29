@@ -93,7 +93,7 @@ void ProcessadorArquivo::processarLinha( int numeroLinha, string linha) throw ( 
     }else if( comando == "campeonato" ){
         classificacao = new Classificacao( stringParaInt( trim( valores ) ) );
         for( HashMap::const_iterator iter = aliases.begin(); iter != aliases.end(); iter++ ){
-            classificacao->inserirEquipe( new Equipe( iter->second ) );
+            classificacao->inserirEquipe( new Equip( iter->second ) );
         }
         std::cout << "Campenato criado: " << valores << " rodadas" << std::endl;
         

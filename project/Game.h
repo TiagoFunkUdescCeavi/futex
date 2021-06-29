@@ -1,6 +1,5 @@
-
-#ifndef JOGO_H
-#define JOGO_H
+#ifndef GAME_H
+#define GAME_H
 
 #include <string>
 using std::string;
@@ -27,5 +26,5 @@ private:
 
 };
 
-#endif /* JOGO_H */
+#endif
 

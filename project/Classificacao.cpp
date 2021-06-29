@@ -17,9 +17,9 @@ Classificacao::Classificacao( int numeroRodadas) {
     }
 }
 
-bool Classificacao::inserirEquipe(Equipe* e) {
+bool Classificacao::inserirEquipe(Equip* e) {
     for( int i = 0; i < equipes.size(); i++ ){
-        if( e->getNome() == equipes.at( i )->getNome() ){
+        if( e->get_name() == equipes.at( i )->get_name() ){
             return false;
         }
     }
@@ -48,17 +48,17 @@ void Classificacao::processarRodada(int numeroRodada){
     }
     
     Game* jogo;
-    Equipe* equipe;
+    Equip* equipe;
     vector< Game* > jogos = rodadas.at( numeroRodada-1 )->getJogos();
     
     for (int i = 0; i < jogos.size(); i++) {
         jogo = jogos.at( i );
         for (int j = 0; j < equipes.size(); j++) {
             equipe = equipes.at( j );
-            if( equipe->getNome() == jogo->get_home() ){
-                equipe->setResultado( jogo->get_home_goals(), jogo->get_visitor_goals() );
-            }else if( equipe->getNome() == jogo->get_visitor() ){
-                equipe->setResultado( jogo->get_visitor_goals(), jogo->get_home_goals() );
+            if( equipe->get_name() == jogo->get_home() ){
+                equipe->set_result( jogo->get_home_goals(), jogo->get_visitor_goals() );
+            }else if( equipe->get_name() == jogo->get_visitor() ){
+                equipe->set_result( jogo->get_visitor_goals(), jogo->get_home_goals() );
             }
         }
     }
@@ -76,28 +76,28 @@ void Classificacao::ordenar() {
             for (int k = 0; k < NUMERO_CRITERIOS_DESEMPATE; k++) {
                 switch( criterios[ k ] ){
                     case PONTOS:
-                        valorA = equipes.at( i )->getPontos();
-                        valorB = equipes.at( j )->getPontos();
+                        valorA = equipes.at( i )->get_points();
+                        valorB = equipes.at( j )->get_points();
                         break;
                     
                     case SALDO_GOLS:
-                        valorA = equipes.at( i )->getSaldoGols();
-                        valorB = equipes.at( j )->getSaldoGols();
+                        valorA = equipes.at( i )->get_diff_goals();
+                        valorB = equipes.at( j )->get_diff_goals();
                         break;
                         
                     case GOLS_MARCADOS:
-                        valorA = equipes.at( i )->getGolsPros();
-                        valorB = equipes.at( j )->getGolsPros();
+                        valorA = equipes.at( i )->get_pro_goals();
+                        valorB = equipes.at( j )->get_pro_goals();
                         break;
                         
                     case VITORIAS:
-                        valorA = equipes.at( i )->getVitorias();
-                        valorB = equipes.at( j )->getVitorias();
+                        valorA = equipes.at( i )->get_wins();
+                        valorB = equipes.at( j )->get_wins();
                         break;
                 }
                 
                 if( valorA < valorB ){
-                    Equipe* e = equipes.at( i );
+                    Equip* e = equipes.at( i );
                     equipes[ i ] = equipes[ j ]; 
                     equipes[ j ] = e;
                     break;
@@ -118,7 +118,7 @@ string Classificacao::mostrar(){
     }else{
         string s = "";
         for (int i = 0; i < tamanho; i++) {
-            s += intParaString( i+1 ) + "º" + equipes.at(i)->editarInformacoesArquivoLatex() + '\n';
+            s += intParaString( i+1 ) + "º" + equipes.at(i)->to_latex() + '\n';
         }
         return s;
     }
@@ -129,7 +129,7 @@ string Classificacao::gerarClassificacaoArquivoLatex(){
     int tamanho = equipes.size();
     string s = "";
     for( int i = 0; i < tamanho; i++ ){
-        s += intParaString( i+1 ) + "º" + equipes.at( i )->editarInformacoesArquivoLatex() + '\n';
+        s += intParaString( i+1 ) + "º" + equipes.at( i )->to_latex() + '\n';
     }
     s += "\n\n\n";
     return s;
