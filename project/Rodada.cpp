@@ -3,12 +3,12 @@
 Rodada::Rodada() {
 }
 
-bool Rodada::inserirJogo(Jogo* j){
+bool Rodada::inserirJogo(Game* j){
     jogos.push_back( j );
     return true;
 }
 
-bool Rodada::removerJogo(Jogo* j){
+bool Rodada::removerJogo(Game* j){
     for( int i = 0; i < jogos.size(); i++ ){
         if( j == jogos.at( i ) ){
             jogos.erase( jogos.begin() + i );
@@ -18,6 +18,6 @@ bool Rodada::removerJogo(Jogo* j){
     return false;
 }
 
-vector< Jogo* > Rodada::getJogos(){
+vector< Game* > Rodada::getJogos(){
     return jogos;
 }

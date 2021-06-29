@@ -27,7 +27,7 @@ bool Classificacao::inserirEquipe(Equipe* e) {
     return true;
 }
 
-bool Classificacao::inserirJogo( int numeroRodada, Jogo* j ){
+bool Classificacao::inserirJogo( int numeroRodada, Game* j ){
     if( numeroRodada < 1 || numeroRodada > rodadas.size() ){
         std::cerr << "numeroRodada inválido: " << numeroRodada << std::endl;
         exit( 1 );
@@ -47,18 +47,18 @@ void Classificacao::processarRodada(int numeroRodada){
         exit( 1 );
     }
     
-    Jogo* jogo;
+    Game* jogo;
     Equipe* equipe;
-    vector< Jogo* > jogos = rodadas.at( numeroRodada-1 )->getJogos();
+    vector< Game* > jogos = rodadas.at( numeroRodada-1 )->getJogos();
     
     for (int i = 0; i < jogos.size(); i++) {
         jogo = jogos.at( i );
         for (int j = 0; j < equipes.size(); j++) {
             equipe = equipes.at( j );
-            if( equipe->getNome() == jogo->getMandate() ){
-                equipe->setResultado( jogo->getGolsMandante(), jogo->getGolsVisitante() );
-            }else if( equipe->getNome() == jogo->getVisitante() ){
-                equipe->setResultado( jogo->getGolsVisitante(), jogo->getGolsMandante() );
+            if( equipe->getNome() == jogo->get_home() ){
+                equipe->setResultado( jogo->get_home_goals(), jogo->get_visitor_goals() );
+            }else if( equipe->getNome() == jogo->get_visitor() ){
+                equipe->setResultado( jogo->get_visitor_goals(), jogo->get_home_goals() );
             }
         }
     }

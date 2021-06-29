@@ -8,7 +8,7 @@ using std::vector;
 using std::string;
 
 #include "Equipe.h"
-#include "Jogo.h"
+#include "Game.h"
 #include "Rodada.h"
 
 enum CRITERIOS{
@@ -24,7 +24,7 @@ public:
     Classificacao( int numeroRodadas );
     
     bool inserirEquipe( Equipe* e );
-    bool inserirJogo( int numeroRodada, Jogo* j );
+    bool inserirJogo( int numeroRodada, Game* j );
     
     void inserirCriteriosDesempate( CRITERIOS criterios[] );
     

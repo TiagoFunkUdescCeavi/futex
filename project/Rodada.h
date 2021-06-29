@@ -4,20 +4,20 @@
 #include <vector>
 using std::vector;
 
-#include "Jogo.h"
+#include "Game.h"
 
 class Rodada {
 public:
     
     Rodada();
     
-    bool inserirJogo( Jogo* j );
-    bool removerJogo( Jogo* j );
+    bool inserirJogo( Game* j );
+    bool removerJogo( Game* j );
     
-    vector< Jogo* > getJogos();
+    vector< Game* > getJogos();
     
 private:
-    vector< Jogo* > jogos;
+    vector< Game* > jogos;
 };
 
 #endif /* RODADA_H */

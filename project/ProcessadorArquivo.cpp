@@ -85,10 +85,10 @@ void ProcessadorArquivo::processarLinha( int numeroLinha, string linha) throw ( 
     }else if( comando == "jogo" ){
         int numeroArgumentos = 0;
         string* argumentos = separar( numeroArgumentos, valores, ' ' );
-        Jogo* j = new Jogo( aliases[ argumentos[ 0 ] ], aliases[ argumentos[ 1 ] ], 
+        Game* j = new Game( aliases[ argumentos[ 0 ] ], aliases[ argumentos[ 1 ] ], 
             stringParaInt( argumentos[ 2 ] ), stringParaInt( argumentos[ 3 ] ) );
         classificacao->inserirJogo( rodadaAtual, j );
-        std::cout << "Jogo adicionado: " << j->toString() << std::endl;
+        std::cout << "Jogo adicionado: " << j->to_string() << std::endl;
         
     }else if( comando == "campeonato" ){
         classificacao = new Classificacao( stringParaInt( trim( valores ) ) );
