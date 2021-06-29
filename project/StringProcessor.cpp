@@ -6,8 +6,6 @@ using std::string;
 
 #include <cstdlib>
 
-#include "Conversor.h"
-
 #include "StringProcessor.h"
 
 string ajust_size(int size, string s, bool pos ){

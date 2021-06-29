@@ -2,7 +2,6 @@
 using std::string;
 
 #include "Game.h"
-#include "Conversor.h"
 
 Game::Game(string home, string visitor, int home_goals, int visitor_goals) {
     this->home = home;

@@ -7,7 +7,6 @@
 #include <cstdlib>
 
 #include "Classification.h"
-#include "Conversor.h"
 
 using namespace std;
 

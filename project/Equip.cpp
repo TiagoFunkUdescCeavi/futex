@@ -1,7 +1,6 @@
 #include <string>
 using std::string;
 
-#include "Conversor.h"
 #include "StringProcessor.h"
 
 #include "Equip.h"

@@ -6,7 +6,6 @@
 #include "StringProcessor.h"
 #include "Classification.h"
 #include "File.h"
-#include "Conversor.h"
 
 #include "FileProcessor.h"
 
