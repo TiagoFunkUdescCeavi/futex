@@ -7,7 +7,7 @@ using std::endl;
 #include <string>
 using std::string;
 
-#include "Classificacao.h"
+#include "Classification.h"
 #include "ProcessadorArquivo.h"
 #include "ProcessadorString.h"
 #include "PersistenciaArquivo.h"
@@ -28,11 +28,11 @@ int main( int argc, char** argv ) {
     
     pa->escrever( "", true );
     try{
-        Classificacao* c = pl->processar();
-        for (int i = 1; i <= c->getNumeroRodadas(); i++) {
-            c->processarRodada( i );
-            c->ordenar();
-            pa->escrever( c->gerarClassificacaoArquivoLatex(), false );
+        Classification* c = pl->processar();
+        for (int i = 1; i <= c->get_number_rounds(); i++) {
+            c->process_round( i );
+            c->sort();
+            pa->escrever( c->to_latex(), false );
         }
 
     }catch( exception &ex ){

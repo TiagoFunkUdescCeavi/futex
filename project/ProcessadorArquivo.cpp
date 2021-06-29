@@ -7,7 +7,7 @@ using std::string;
 using std::exception;
 
 #include "ProcessadorString.h"
-#include "Classificacao.h"
+#include "Classification.h"
 #include "PersistenciaArquivo.h"
 
 #include "ProcessadorArquivo.h"
@@ -17,7 +17,7 @@ ProcessadorArquivo::ProcessadorArquivo( string nomeArquivo ) {
     this->nomeArquivo = nomeArquivo;
 }
 
-Classificacao* ProcessadorArquivo::processar() throw (exception) {
+Classification* ProcessadorArquivo::processar() throw (exception) {
     bool sucesso = true;
     int numeroLinha = 1;
     string linha = "", info;
@@ -87,13 +87,13 @@ void ProcessadorArquivo::processarLinha( int numeroLinha, string linha) throw ( 
         string* argumentos = separar( numeroArgumentos, valores, ' ' );
         Game* j = new Game( aliases[ argumentos[ 0 ] ], aliases[ argumentos[ 1 ] ], 
             stringParaInt( argumentos[ 2 ] ), stringParaInt( argumentos[ 3 ] ) );
-        classificacao->inserirJogo( rodadaAtual, j );
+        classificacao->insert_game( rodadaAtual, j );
         std::cout << "Jogo adicionado: " << j->to_string() << std::endl;
         
     }else if( comando == "campeonato" ){
-        classificacao = new Classificacao( stringParaInt( trim( valores ) ) );
+        classificacao = new Classification( stringParaInt( trim( valores ) ) );
         for( HashMap::const_iterator iter = aliases.begin(); iter != aliases.end(); iter++ ){
-            classificacao->inserirEquipe( new Equip( iter->second ) );
+            classificacao->insert_equip( new Equip( iter->second ) );
         }
         std::cout << "Campenato criado: " << valores << " rodadas" << std::endl;
         

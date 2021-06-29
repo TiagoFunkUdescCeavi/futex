@@ -11,13 +11,13 @@ using std::less;
 #include <exception>
 using std::exception;
 
-#include "Classificacao.h"
+#include "Classification.h"
 
 class ProcessadorArquivo {
 public:
     ProcessadorArquivo( string nomeArquivo );
     
-    Classificacao* processar() throw (exception);
+    Classification* processar() throw (exception);
 private:
     const string CAMPEONATO = "campeonato";
     const string RODADA = "rodada";
@@ -26,7 +26,7 @@ private:
     
     int rodadaAtual;
     string nomeArquivo;
-    Classificacao* classificacao;
+    Classification* classificacao;
     
     typedef map< string, string, less< string > > HashMap;
     HashMap aliases;
