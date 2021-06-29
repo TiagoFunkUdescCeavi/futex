@@ -10,7 +10,7 @@ using std::string;
 #include "Classification.h"
 #include "ProcessadorArquivo.h"
 #include "ProcessadorString.h"
-#include "PersistenciaArquivo.h"
+#include "File.h"
 
 int main( int argc, char** argv ) {
 
@@ -24,15 +24,15 @@ int main( int argc, char** argv ) {
     
     ProcessadorArquivo* pl = new ProcessadorArquivo( input_file );
     
-    PersistenciaArquivo* pa = new PersistenciaArquivo( output_file );
+    File* f = new File( output_file );
     
-    pa->escrever( "", true );
+    f->write( "", true );
     try{
         Classification* c = pl->processar();
         for (int i = 1; i <= c->get_number_rounds(); i++) {
             c->process_round( i );
             c->sort();
-            pa->escrever( c->to_latex(), false );
+            f->write( c->to_latex(), false );
         }
 
     }catch( exception &ex ){

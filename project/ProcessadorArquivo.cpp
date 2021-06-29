@@ -8,7 +8,7 @@ using std::exception;
 
 #include "ProcessadorString.h"
 #include "Classification.h"
-#include "PersistenciaArquivo.h"
+#include "File.h"
 
 #include "ProcessadorArquivo.h"
 #include "Conversor.h"
@@ -21,9 +21,9 @@ Classification* ProcessadorArquivo::processar() throw (exception) {
     bool sucesso = true;
     int numeroLinha = 1;
     string linha = "", info;
-    PersistenciaArquivo* p = new PersistenciaArquivo( nomeArquivo );
+    File* p = new File( nomeArquivo );
     
-    info = p->ler();
+    info = p->read();
 
     for (int i = 0; i < info.length(); i++) {
         if( info[ i ] == '\n' || i-1 == info.length() ){
