@@ -95,5 +95,5 @@ void FileProcessor::process_championship( string value ){
     for( Map::const_iterator iter = aliases.begin(); iter != aliases.end(); iter++ ){
         classification->insert_equip( new Equip( iter->second ) );
     }
-    std::cout << "Campenato criado: " << value << " rodadas" << std::endl;
+    std::cout << "Campeonato criado: " << value << " rodadas" << std::endl;
 }

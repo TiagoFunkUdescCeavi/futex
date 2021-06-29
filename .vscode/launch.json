@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceRoot}/project/futex",
-            "args": ["${workspaceRoot}/project/teste.txt", "${workspaceRoot}/project/resultado.txt"],
+            "args": ["${workspaceRoot}/files/eliminatorias_eurocopa_2020_grupo_a.txt", "${workspaceRoot}/files/resultado.txt"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
