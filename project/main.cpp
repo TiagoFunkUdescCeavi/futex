@@ -8,7 +8,7 @@ using std::endl;
 using std::string;
 
 #include "Classification.h"
-#include "ProcessadorArquivo.h"
+#include "FileProcessor.h"
 #include "ProcessadorString.h"
 #include "File.h"
 
@@ -22,13 +22,13 @@ int main( int argc, char** argv ) {
     string input_file( argv[ 1 ] );
     string output_file( argv[ 2 ] );
     
-    ProcessadorArquivo* pl = new ProcessadorArquivo( input_file );
+    FileProcessor* pl = new FileProcessor( input_file );
     
     File* f = new File( output_file );
     
     f->write( "", true );
     try{
-        Classification* c = pl->processar();
+        Classification* c = pl->process();
         for (int i = 1; i <= c->get_number_rounds(); i++) {
             c->process_round( i );
             c->sort();
