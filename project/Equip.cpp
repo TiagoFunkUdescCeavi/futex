@@ -2,7 +2,7 @@
 using std::string;
 
 #include "Conversor.h"
-#include "ProcessadorString.h"
+#include "StringProcessor.h"
 
 #include "Equip.h"
 #include "Classification.h"
@@ -123,7 +123,7 @@ string Equip::to_string(){
 string Equip::to_latex(){
     string s = "";
     
-    s += "&" + ajustarTamanho( 20, name, true);
+    s += "&" + ajust_size( 20, name, true);
     s += "&" + std::to_string( points );
     s += "&" + std::to_string( games );
     s += "\t&" + std::to_string( wins );
@@ -139,7 +139,7 @@ string Equip::to_latex(){
             
     s += std::to_string( diff_goals );
     s += "\t&" + std::to_string( previous_position );
-    s += "&" + ajustarTamanho( 3, std::to_string( aproveitamento ), false ) + " %";
+    s += "&" + ajust_size( 3, std::to_string( aproveitamento ), false ) + " %";
     
     s += "\t&";
     

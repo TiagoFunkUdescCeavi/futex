@@ -3,7 +3,7 @@
 #include <iostream>
 #include <exception>
 
-#include "ProcessadorString.h"
+#include "StringProcessor.h"
 #include "Classification.h"
 #include "File.h"
 #include "Conversor.h"
@@ -82,7 +82,7 @@ void FileProcessor::process_round( string value ){
 }
 
 void FileProcessor::process_game( string value ){
-    string* arguments = separar( value, ' ' );
+    string* arguments = split( value, ' ' );
     Game* g = new Game(
         this->aliases[ arguments[ 0 ] ], this->aliases[ arguments[ 1 ] ], 
         stoi( arguments[ 2 ] ), stoi( arguments[ 3 ] )

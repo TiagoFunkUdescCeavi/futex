@@ -9,7 +9,7 @@ using std::string;
 
 #include "Classification.h"
 #include "FileProcessor.h"
-#include "ProcessadorString.h"
+#include "StringProcessor.h"
 #include "File.h"
 
 int main( int argc, char** argv ) {
