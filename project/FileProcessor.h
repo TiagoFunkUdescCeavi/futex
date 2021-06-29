@@ -2,14 +2,10 @@
 #define PROCESSADORARQUIVO_H
 
 #include <string>
-using std::string;
-
 #include <map>
-using std::map;
-using std::less;
-
 #include <exception>
-using std::exception;
+
+using namespace std;
 
 #include "Classification.h"
 
@@ -33,6 +29,10 @@ private:
     Map aliases;
     
     void process_line( int line_number, string line );
+    void process_alias( string value );
+    void process_round( string value );
+    void process_game( string value );
+    void process_championship( string value );
 };
 
 #endif

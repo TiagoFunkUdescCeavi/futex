@@ -10,42 +10,29 @@
 
 #include "FileProcessor.h"
 
-using namespace std;
-
 FileProcessor::FileProcessor( string file_name ) {
     this->file_name = file_name;
 }
 
 Classification* FileProcessor::process() {
-    bool sucess = true;
+    char aux = ' ';
     int line_number = 1;
-    string line = "", str;
+    string line = "", str = "";
     File* f = new File( file_name );
     
     str = f->read();
 
     for (unsigned int i = 0; i < str.length(); i++) {
-        if( str[ i ] == '\n' || i-1 == str.length() ){
-            try{
-                process_line( line_number, line );
-            }catch ( exception &exception ){
-                sucess = false;
-            }
+        aux = str[ i ];
+        if( aux == '\n' || i-1 == str.length() ){
+            process_line( line_number, line );
             line = "";
             line_number++;
         }else{
-            line += str[ i ];
+            line += aux;
         }
     }
-    try{
-        process_line( line_number, line );
-    }catch ( exception &exception ){
-        sucess = false;
-    }
-    
-    if( !sucess ){
-        throw runtime_error( "DEVIDO AO ERRO DE SINTAXE, A GERAÇÃO DA TABELA FOI ABORTADO.\n");
-    }
+    process_line( line_number, line );
     
     return this->classification;
 }
@@ -55,7 +42,7 @@ void FileProcessor::process_line( int line_number, string line){
         return ;
     }
 
-    string comand, values;
+    string comand, value;
 
     // 18446744073709551615
     // Valor para quando o find não encontra a ocorrência.
@@ -63,38 +50,55 @@ void FileProcessor::process_line( int line_number, string line){
         throw runtime_error("Linha " + std::to_string( line_number ) + " - Token \':\' não foi encontrado: " + line + "\n");
     }else{
         comand = trim( line.substr( 0, line.find( ':', 0 ) ) );
-        values = trim( line.substr( line.find( ":" ) + 1 ) );
+        value = trim( line.substr( line.find( ":" ) + 1 ) );
     }
 
-    if( comand == "alias" ){
-        string alias, name;
-        alias = values.substr( 0, values.find( " ", 0 ) );
-        name = values.substr( values.find( " ", 0 ) + 1 );
+    if( comand == ALIAS ){
+        this->process_alias( value );
         
-        aliases.insert( Map::value_type( alias, name ) );
-        std::cout << "Alias adicionado: " << alias << " - " << name << std::endl;
-        
-    }else if( comand == "rodada" ){
-        actual_round = stoi( trim( values ) );
-        std::cout << "Nova rodada: " << actual_round << std::endl;
-        
-    }else if( comand == "jogo" ){
-        int arguments_number = 0;
-        string* arguments = separar( arguments_number, values, ' ' );
-        Game* j = new Game( aliases[ arguments[ 0 ] ], aliases[ arguments[ 1 ] ], 
-            stoi( arguments[ 2 ] ), stoi( arguments[ 3 ] ) );
-        classification->insert_game( actual_round, j );
-        std::cout << "Jogo adicionado: " << j->to_string() << std::endl;
-        
-    }else if( comand == "campeonato" ){
-        classification = new Classification( stoi( trim( values ) ) );
-        for( Map::const_iterator iter = aliases.begin(); iter != aliases.end(); iter++ ){
-            classification->insert_equip( new Equip( iter->second ) );
-        }
-        std::cout << "Campenato criado: " << values << " rodadas" << std::endl;
-        
+    }else if( comand == ROUND ){
+        this->process_round( value );
+
+    }else if( comand == GAME ){
+        this->process_game( value );
+
+    }else if( comand == CHAMPIONSHIP ){
+        this->process_championship( value );
+
     }else{
         throw runtime_error( "Linha " + std::to_string( line_number ) + " - Comando não encontrado: " + comand + "\n");
     }
 
+}
+
+void FileProcessor::process_alias( string value ){
+    string alias, name;
+    alias = value.substr( 0, value.find( " ", 0 ) );
+    name = value.substr( value.find( " ", 0 ) + 1 );
+    aliases.insert( Map::value_type( alias, name ) );
+    cout << "Alias adicionado: " << alias << " - " << name << endl;
+}
+
+void FileProcessor::process_round( string value ){
+    this->actual_round = stoi( trim( value ) );
+    std::cout << "Nova rodada: " << this->actual_round << std::endl;
+}
+
+void FileProcessor::process_game( string value ){
+    int arguments_number = 0;
+    string* arguments = separar( arguments_number, value, ' ' );
+    Game* g = new Game(
+        this->aliases[ arguments[ 0 ] ], this->aliases[ arguments[ 1 ] ], 
+        stoi( arguments[ 2 ] ), stoi( arguments[ 3 ] )
+    );
+    classification->insert_game( this->actual_round, g );
+    std::cout << "Jogo adicionado: " << g->to_string() << std::endl;
+}
+
+void FileProcessor::process_championship( string value ){
+    classification = new Classification( stoi( trim( value ) ) );
+    for( Map::const_iterator iter = aliases.begin(); iter != aliases.end(); iter++ ){
+        classification->insert_equip( new Equip( iter->second ) );
+    }
+    std::cout << "Campenato criado: " << value << " rodadas" << std::endl;
 }
