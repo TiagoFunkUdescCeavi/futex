@@ -12,11 +12,19 @@ using std::string;
 #include "ProcessadorString.h"
 #include "PersistenciaArquivo.h"
 
-int main( int argc, char** argv ) {    
+int main( int argc, char** argv ) {
+
+    if( argc != 3 ){
+        cout << "Entrada esperada: ./futex <input_file> <output_file>" << endl;
+        exit( 1 );
+    }
+
+    string input_file( argv[ 1 ] );
+    string output_file( argv[ 2 ] );
     
-    ProcessadorArquivo* pl = new ProcessadorArquivo( "./teste.txt");
+    ProcessadorArquivo* pl = new ProcessadorArquivo( input_file );
     
-    PersistenciaArquivo* pa = new PersistenciaArquivo("./resultado.txt");
+    PersistenciaArquivo* pa = new PersistenciaArquivo( output_file );
     
     pa->escrever( "", true );
     try{
