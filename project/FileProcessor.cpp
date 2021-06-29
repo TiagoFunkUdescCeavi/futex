@@ -43,10 +43,7 @@ void FileProcessor::process_line( int line_number, string line){
     }
 
     string comand, value;
-
-    // 18446744073709551615
-    // Valor para quando o find não encontra a ocorrência.
-    if( line.find( ":" ) == 18446744073709551615 ){
+    if( line.find( ":" ) == string::npos ){
         throw runtime_error("Linha " + std::to_string( line_number ) + " - Token \':\' não foi encontrado: " + line + "\n");
     }else{
         comand = trim( line.substr( 0, line.find( ':', 0 ) ) );
@@ -85,8 +82,7 @@ void FileProcessor::process_round( string value ){
 }
 
 void FileProcessor::process_game( string value ){
-    int arguments_number = 0;
-    string* arguments = separar( arguments_number, value, ' ' );
+    string* arguments = separar( value, ' ' );
     Game* g = new Game(
         this->aliases[ arguments[ 0 ] ], this->aliases[ arguments[ 1 ] ], 
         stoi( arguments[ 2 ] ), stoi( arguments[ 3 ] )

@@ -11,6 +11,6 @@ string arrendondar( double numero );
 int comprimento( const char* s );
 char charEm( const int posicao, const char* s );
 string trim( string s );
-string* separar( int &tamanhoVetor, string s, char separador );
+string* separar( string s, char separador );
 
 #endif /* EDITORSTRING_H */

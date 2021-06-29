@@ -105,7 +105,7 @@ string trim( string s ){
     return s.substr( inicio, termino-inicio+1 );
 }
 
-string* separar( int &tamanhoVetor, string s, char separador ){
+string* separar( string s, char separador ){
     int tamanho = 0;
     char aux;
     string* vetor = 0;
@@ -119,7 +119,6 @@ string* separar( int &tamanhoVetor, string s, char separador ){
         }
     }
     tamanho++;
-    tamanhoVetor = tamanho;
     vetor = new string[ tamanho ];
     
     int contador = 0;
