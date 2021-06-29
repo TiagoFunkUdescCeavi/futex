@@ -5,7 +5,7 @@ using std::string;
 #include "ProcessadorString.h"
 
 #include "Equip.h"
-#include "Classificacao.h"
+#include "Classification.h"
 
 Equip::Equip(string nome){
     this->name = nome;
