@@ -1,19 +1,15 @@
 #include <vector>
-
 #include <string>
-
 #include <iostream>
-
 #include <cstdlib>
 
 #include "Classification.h"
+#include "Constants.h"
 
 using namespace std;
 
-Classification::Classification( int rounds ) {
-    for( int i = 0; i < rounds; i++ ){
-        this->rounds.push_back( new Round() );
-    }
+Classification::Classification( string name ) {
+    this->name = name;
     this->criterios[ 0 ] = POINTS;
     this->criterios[ 1 ] = DIFF_GOALS;
     this->criterios[ 2 ] = PRO_GOALS;
@@ -42,6 +38,10 @@ void Classification::inserirCriteriosDesempate(CRITERIOS criterios[] ){
     for( int i = 0; i < NUMERO_CRITERIOS_DESEMPATE; i++){
         this->criterios[ i ] = criterios[ i ];
     }
+}
+
+void Classification::create_new_round(){
+    this->rounds.push_back( new Round() );
 }
 
 void Classification::process_round(int round){
@@ -124,14 +124,17 @@ string Classification::to_string(){
 
 
 string Classification::to_latex(){
-    string s = "Rodada " + std::to_string( this->actual_round + 1 ) + "\n";
+    Constants c;
+    string s = c.get_subsection( "Rodada " + std::to_string( this->actual_round + 1 ), false );
     vector< Game * > games = this->rounds[ this->actual_round ]->get_games();
     for( unsigned int i = 0; i < games.size(); i++ ){
         s += games[ i ]->to_string() + "\n";
     }
+    s += c.get_table_header();
     for( unsigned int i = 0; i < this->equips.size(); i++ ){
         s += std::to_string( i+1 ) + "º" + this->equips[ i ]->to_latex() + '\n';
     }
+    s += c.get_table_footer();
     s += "\n";
     return s;
 }

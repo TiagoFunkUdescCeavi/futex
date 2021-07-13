@@ -58,8 +58,11 @@ void FileProcessor::process_line( int line_number, string line){
     }else if( comand == GAME ){
         this->process_game( value );
 
-    }else if( comand == CHAMPIONSHIP ){
-        this->process_championship( value );
+    }else if( comand == PHASE ){
+        this->process_phase( value );
+
+    }else if( comand == NAME ){
+        this->process_name( value );
 
     }else{
         throw runtime_error( "Linha " + std::to_string( line_number ) + " - Comando não encontrado: " + comand + "\n");
@@ -76,6 +79,7 @@ void FileProcessor::process_alias( string value ){
 }
 
 void FileProcessor::process_round( string value ){
+    this->classification->create_new_round();
     this->actual_round = stoi( trim( value ) );
     std::cout << "Nova rodada: " << this->actual_round << std::endl;
 }
@@ -90,10 +94,18 @@ void FileProcessor::process_game( string value ){
     std::cout << "Jogo adicionado: " << g->to_string() << std::endl;
 }
 
-void FileProcessor::process_championship( string value ){
-    classification = new Classification( stoi( trim( value ) ) );
+void FileProcessor::process_phase( string value ){
+    if( this->classification != NULL ){
+        this->championship->add_phase( this->classification );
+    }
+    classification = new Classification( trim( value ) );
     for( Map::const_iterator iter = aliases.begin(); iter != aliases.end(); iter++ ){
         classification->insert_equip( new Equip( iter->second ) );
     }
-    std::cout << "Campeonato criado: " << value << " rodadas" << std::endl;
+    std::cout << "Fase criada: " << value << std::endl;
+}
+
+void FileProcessor::process_name( string value ){
+    this->championship = new Championship( trim( value ) );
+    std::cout << "Nome adicionado: " << value << std::endl;
 }

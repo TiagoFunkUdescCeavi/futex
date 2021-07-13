@@ -1,101 +1,161 @@
 
-Rodada 1
+\subsection*{Rodada 1}
 Bulgária 1-1 Montenegro
 Inglaterra 5-0 República Tcheca
+\begin{center}
+\begin{tabular}{| c | l | c | c | c | c | c | c | c | c | c | c |}
+\multicolumn{12}{c}{\textbf{Classificação ao término da rodada}}\\
+Pos.&Equipe&Pts&J&V&E&D&GP&GC&SG&PA&RES\\
 1º&Inglaterra          &3&1	&1&0&0	&5&0&+5	&1&100 %	& -  - 5-0 \\
 2º&Bulgária           &1&1	&0&1&0	&1&1&+0	&1& 33 %	& -  - 1-1 \\
 3º&Montenegro          &1&1	&0&1&0	&1&1&+0	&1& 33 %	& -  - 1-1 \\
 4º&Kosovo              &0&0	&0&0&0	&0&0&+0	&1&  0 %	& -  -  - \\
 5º&República Tcheca   &0&1	&0&0&1	&0&5&-5	&1&  0 %	& -  - 0-5 \\
+\end{tabular}
+\end{center}
 
 
-Rodada 2
+\subsection*{Rodada 2}
 Kosovo 1-1 Bulgária
 Montenegro 1-5 Inglaterra
+\begin{center}
+\begin{tabular}{| c | l | c | c | c | c | c | c | c | c | c | c |}
+\multicolumn{12}{c}{\textbf{Classificação ao término da rodada}}\\
+Pos.&Equipe&Pts&J&V&E&D&GP&GC&SG&PA&RES\\
 1º&Inglaterra          &6&2	&2&0&0	&10&1&+9	&1&100 %	& - 5-0 5-1 \\
 2º&Bulgária           &2&2	&0&2&0	&2&2&+0	&1& 33 %	& - 1-1 1-1 \\
 3º&Kosovo              &1&1	&0&1&0	&1&1&+0	&1& 33 %	& -  - 1-1 \\
 4º&Montenegro          &1&2	&0&1&1	&2&6&-4	&1& 16 %	& - 1-1 1-5 \\
 5º&República Tcheca   &0&1	&0&0&1	&0&5&-5	&1&  0 %	& -  - 0-5 \\
+\end{tabular}
+\end{center}
 
 
-Rodada 3
+\subsection*{Rodada 3}
 República Tcheca 2-1 Bulgária
 Montenegro 1-1 Kosovo
+\begin{center}
+\begin{tabular}{| c | l | c | c | c | c | c | c | c | c | c | c |}
+\multicolumn{12}{c}{\textbf{Classificação ao término da rodada}}\\
+Pos.&Equipe&Pts&J&V&E&D&GP&GC&SG&PA&RES\\
 1º&Inglaterra          &6&2	&2&0&0	&10&1&+9	&1&100 %	& - 5-0 5-1 \\
 2º&República Tcheca   &3&2	&1&0&1	&2&6&-4	&1& 50 %	& - 0-5 2-1 \\
 3º&Kosovo              &2&2	&0&2&0	&2&2&+0	&1& 33 %	& - 1-1 1-1 \\
 4º&Bulgária           &2&3	&0&2&1	&3&4&-1	&1& 22 %	&1-1 1-1 1-2 \\
 5º&Montenegro          &2&3	&0&2&1	&3&7&-4	&1& 22 %	&1-1 1-5 1-1 \\
+\end{tabular}
+\end{center}
 
 
-Rodada 4
+\subsection*{Rodada 4}
 Bulgária 2-3 Kosovo
 República Tcheca 3-0 Montenegro
+\begin{center}
+\begin{tabular}{| c | l | c | c | c | c | c | c | c | c | c | c |}
+\multicolumn{12}{c}{\textbf{Classificação ao término da rodada}}\\
+Pos.&Equipe&Pts&J&V&E&D&GP&GC&SG&PA&RES\\
 1º&Inglaterra          &6&2	&2&0&0	&10&1&+9	&1&100 %	& - 5-0 5-1 \\
 2º&República Tcheca   &6&3	&2&0&1	&5&6&-1	&1& 66 %	&0-5 2-1 3-0 \\
 3º&Kosovo              &5&3	&1&2&0	&5&4&+1	&1& 55 %	&1-1 1-1 3-2 \\
 4º&Bulgária           &2&4	&0&2&2	&5&7&-2	&1& 16 %	&1-1 1-2 2-3 \\
 5º&Montenegro          &2&4	&0&2&2	&3&10&-7	&1& 16 %	&1-5 1-1 0-3 \\
+\end{tabular}
+\end{center}
 
 
-Rodada 5
+\subsection*{Rodada 5}
 Kosovo 2-1 República Tcheca
 Inglaterra 4-0 Bulgária
+\begin{center}
+\begin{tabular}{| c | l | c | c | c | c | c | c | c | c | c | c |}
+\multicolumn{12}{c}{\textbf{Classificação ao término da rodada}}\\
+Pos.&Equipe&Pts&J&V&E&D&GP&GC&SG&PA&RES\\
 1º&Inglaterra          &9&3	&3&0&0	&14&1&+13	&1&100 %	&5-0 5-1 4-0 \\
 2º&Kosovo              &8&4	&2&2&0	&7&5&+2	&1& 66 %	&1-1 3-2 2-1 \\
 3º&República Tcheca   &6&4	&2&0&2	&6&8&-2	&1& 50 %	&2-1 3-0 1-2 \\
 4º&Bulgária           &2&5	&0&2&3	&5&11&-6	&1& 13 %	&1-2 2-3 0-4 \\
 5º&Montenegro          &2&4	&0&2&2	&3&10&-7	&1& 16 %	&1-5 1-1 0-3 \\
+\end{tabular}
+\end{center}
 
 
-Rodada 6
+\subsection*{Rodada 6}
 Inglaterra 5-3 Kosovo
 Montenegro 0-3 República Tcheca
+\begin{center}
+\begin{tabular}{| c | l | c | c | c | c | c | c | c | c | c | c |}
+\multicolumn{12}{c}{\textbf{Classificação ao término da rodada}}\\
+Pos.&Equipe&Pts&J&V&E&D&GP&GC&SG&PA&RES\\
 1º&Inglaterra          &12&4	&4&0&0	&19&4&+15	&1&100 %	&5-1 4-0 5-3 \\
 2º&República Tcheca   &9&5	&3&0&2	&9&8&+1	&1& 60 %	&3-0 1-2 3-0 \\
 3º&Kosovo              &8&5	&2&2&1	&10&10&+0	&1& 53 %	&3-2 2-1 3-5 \\
 4º&Bulgária           &2&5	&0&2&3	&5&11&-6	&1& 13 %	&1-2 2-3 0-4 \\
 5º&Montenegro          &2&5	&0&2&3	&3&13&-10	&1& 13 %	&1-1 0-3 0-3 \\
+\end{tabular}
+\end{center}
 
 
-Rodada 7
+\subsection*{Rodada 7}
 República Tcheca 2-1 Inglaterra
 Montenegro 0-0 Bulgária
+\begin{center}
+\begin{tabular}{| c | l | c | c | c | c | c | c | c | c | c | c |}
+\multicolumn{12}{c}{\textbf{Classificação ao término da rodada}}\\
+Pos.&Equipe&Pts&J&V&E&D&GP&GC&SG&PA&RES\\
 1º&Inglaterra          &12&5	&4&0&1	&20&6&+14	&1& 80 %	&4-0 5-3 1-2 \\
 2º&República Tcheca   &12&6	&4&0&2	&11&9&+2	&1& 66 %	&1-2 3-0 2-1 \\
 3º&Kosovo              &8&5	&2&2&1	&10&10&+0	&1& 53 %	&3-2 2-1 3-5 \\
 4º&Bulgária           &3&6	&0&3&3	&5&11&-6	&1& 16 %	&2-3 0-4 0-0 \\
 5º&Montenegro          &3&6	&0&3&3	&3&13&-10	&1& 16 %	&0-3 0-3 0-0 \\
+\end{tabular}
+\end{center}
 
 
-Rodada 8
+\subsection*{Rodada 8}
 Bulgária 0-6 Inglaterra
 Kosovo 2-0 Montenegro
+\begin{center}
+\begin{tabular}{| c | l | c | c | c | c | c | c | c | c | c | c |}
+\multicolumn{12}{c}{\textbf{Classificação ao término da rodada}}\\
+Pos.&Equipe&Pts&J&V&E&D&GP&GC&SG&PA&RES\\
 1º&Inglaterra          &15&6	&5&0&1	&26&6&+20	&1& 83 %	&5-3 1-2 6-0 \\
 2º&República Tcheca   &12&6	&4&0&2	&11&9&+2	&1& 66 %	&1-2 3-0 2-1 \\
 3º&Kosovo              &11&6	&3&2&1	&12&10&+2	&1& 61 %	&2-1 3-5 2-0 \\
 4º&Bulgária           &3&7	&0&3&4	&5&17&-12	&1& 14 %	&0-4 0-0 0-6 \\
 5º&Montenegro          &3&7	&0&3&4	&3&15&-12	&1& 14 %	&0-3 0-0 0-2 \\
+\end{tabular}
+\end{center}
 
 
-Rodada 9
+\subsection*{Rodada 9}
 República Tcheca 2-1 Kosovo
 Inglaterra 7-0 Montenegro
+\begin{center}
+\begin{tabular}{| c | l | c | c | c | c | c | c | c | c | c | c |}
+\multicolumn{12}{c}{\textbf{Classificação ao término da rodada}}\\
+Pos.&Equipe&Pts&J&V&E&D&GP&GC&SG&PA&RES\\
 1º&Inglaterra          &18&7	&6&0&1	&33&6&+27	&1& 85 %	&1-2 6-0 7-0 \\
 2º&República Tcheca   &15&7	&5&0&2	&13&10&+3	&1& 71 %	&3-0 2-1 2-1 \\
 3º&Kosovo              &11&7	&3&2&2	&13&12&+1	&1& 52 %	&3-5 2-0 1-2 \\
 4º&Bulgária           &3&7	&0&3&4	&5&17&-12	&1& 14 %	&0-4 0-0 0-6 \\
 5º&Montenegro          &3&8	&0&3&5	&3&22&-19	&1& 12 %	&0-0 0-2 0-7 \\
+\end{tabular}
+\end{center}
 
 
-Rodada 10
+\subsection*{Rodada 10}
 Bulgária 1-0 República Tcheca
 Kosovo 0-4 Inglaterra
+\begin{center}
+\begin{tabular}{| c | l | c | c | c | c | c | c | c | c | c | c |}
+\multicolumn{12}{c}{\textbf{Classificação ao término da rodada}}\\
+Pos.&Equipe&Pts&J&V&E&D&GP&GC&SG&PA&RES\\
 1º&Inglaterra          &21&8	&7&0&1	&37&6&+31	&1& 87 %	&6-0 7-0 4-0 \\
 2º&República Tcheca   &15&8	&5&0&3	&13&11&+2	&1& 62 %	&2-1 2-1 0-1 \\
 3º&Kosovo              &11&8	&3&2&3	&13&16&-3	&1& 45 %	&2-0 1-2 0-4 \\
 4º&Bulgária           &6&8	&1&3&4	&6&17&-11	&1& 25 %	&0-0 0-6 1-0 \\
 5º&Montenegro          &3&8	&0&3&5	&3&22&-19	&1& 12 %	&0-0 0-2 0-7 \\
+\end{tabular}
+\end{center}
 
 

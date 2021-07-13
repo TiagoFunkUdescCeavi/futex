@@ -1,10 +1,12 @@
+nome: Eliminatorias Eurocopa 2020
+
 alias: ing Inglaterra
 alias: tch República Tcheca
 alias: kos Kosovo
 alias: bul Bulgária
 alias: mon Montenegro
 
-campeonato: 10
+fase: Grupo A
 
 rodada: 1
 jogo: bul mon 1 1
