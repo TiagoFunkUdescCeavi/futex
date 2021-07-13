@@ -10,6 +10,7 @@ using namespace std;
 
 Classification::Classification( string name ) {
     this->name = name;
+    this->actual_round = 0;
     this->criterios[ 0 ] = POINTS;
     this->criterios[ 1 ] = DIFF_GOALS;
     this->criterios[ 2 ] = PRO_GOALS;

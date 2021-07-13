@@ -7,7 +7,7 @@ using std::endl;
 #include <string>
 using std::string;
 
-#include "Classification.h"
+#include "Championship.h"
 #include "FileProcessor.h"
 #include "StringProcessor.h"
 #include "File.h"
@@ -28,12 +28,9 @@ int main( int argc, char** argv ) {
     
     f->write( "", true );
     try{
-        Classification* c = fp->process();
-        for (int i = 1; i <= c->get_number_rounds(); i++) {
-            c->process_round( i );
-            c->sort();
-            f->write( c->to_latex(), false );
-        }
+        Championship * c = fp->process();
+        c->process();
+        f->write( c->to_latex(), false );
 
     }catch( exception &ex ){
         cout << ex.what() << endl;

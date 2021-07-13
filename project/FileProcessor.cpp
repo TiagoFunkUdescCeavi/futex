@@ -13,7 +13,7 @@ FileProcessor::FileProcessor( string file_name ) {
     this->file_name = file_name;
 }
 
-Classification* FileProcessor::process() {
+Championship * FileProcessor::process() {
     char aux = ' ';
     int line_number = 1;
     string line = "", str = "";
@@ -32,8 +32,9 @@ Classification* FileProcessor::process() {
         }
     }
     process_line( line_number, line );
+    this->championship->add_phase( this->classification );
     
-    return this->classification;
+    return this->championship;
 }
 
 void FileProcessor::process_line( int line_number, string line){

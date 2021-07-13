@@ -14,7 +14,7 @@ class FileProcessor {
 public:
     FileProcessor( string file_name );
     
-    Classification* process();
+    Championship * process();
 
 private:
     const string NAME = "nome";
