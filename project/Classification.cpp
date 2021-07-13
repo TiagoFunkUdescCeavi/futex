@@ -76,6 +76,9 @@ int Classification::get_number_rounds(){
 
 void Classification::sort() {
     int diff;
+    for( unsigned int i = 0; i < this->equips.size(); i++ ){
+        this->equips[i]->set_previous_position( i+1 );
+    }
     for (unsigned int i = 0; i < this->equips.size(); i++) {
         for (unsigned int j = i+1; j < this->equips.size(); j++) {
             for (int k = 0; k < this->NUMERO_CRITERIOS_DESEMPATE; k++) {

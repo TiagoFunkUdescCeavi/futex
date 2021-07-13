@@ -43,6 +43,7 @@ private:
     int diff_goals;
     
     int aproveitamento;
+    bool first_game;
     int previous_position;
     string previous_results[ NUMBER_PREVIOUS_RESULTS ];
     

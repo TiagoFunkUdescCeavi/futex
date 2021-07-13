@@ -17,6 +17,7 @@ Equip::Equip(string nome){
     this->sof_goals = 0;
     this->diff_goals = 0;
     this->aproveitamento = 0;
+    this->first_game = true;
     this->previous_position = 1;
 }
 
@@ -137,7 +138,13 @@ string Equip::to_latex(){
     }
             
     s += std::to_string( diff_goals );
-    s += "\t&" + std::to_string( previous_position );
+    s += "\t&";
+    if( this->first_game ){
+        s += std::to_string( 1 );
+        this->first_game = false;
+    }else{
+        s += std::to_string( previous_position );
+    }
     s += "&" + ajust_size( 3, std::to_string( aproveitamento ), false ) + " %";
     
     s += "\t&";
