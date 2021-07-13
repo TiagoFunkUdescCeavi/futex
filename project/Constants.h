@@ -10,6 +10,8 @@ class Constants{
         string get_table_footer();
         string get_section( string s, bool numerable );
         string get_subsection( string s, bool numerable );
+
+        string get_portuguese_acents();
 };
 
 #endif

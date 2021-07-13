@@ -26,3 +26,7 @@ string Constants::get_subsection( string s, bool numerable ){
     str += "{" + s + "}\n";
     return str;
 }
+
+string Constants::get_portuguese_acents(){
+    return "áéíóúâêôãç";
+}

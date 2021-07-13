@@ -1,15 +1,23 @@
-#include <iostream>
-using std::cin;
-
 #include <string>
 using std::string;
 
 #include <cstdlib>
 
 #include "StringProcessor.h"
+#include "Constants.h"
+
+int count_acents( string s, string acents ){
+    int count = 0;
+    for( unsigned int i = 0; i < acents.size(); i += 2 ){
+        if( s.find( acents.substr(i, 2) ) != string::npos ){
+            count++;
+        }
+    }
+    return count;
+}
 
 string ajust_size(int size, string s, bool pos ){
-    int s_size = s.length();
+    int s_size = s.length() - count_acents( s, (new Constants())->get_portuguese_acents() );
     if( size < s_size ){
         return s.substr( 0, size-1 );
     }
