@@ -62,7 +62,9 @@ string Messenger::get_subsection( string s, bool numerable ){
 
 string Messenger::get_latex_comand( string file ){
     string s = file.substr( 0, file.find_last_of("/")+1 );
-    string str = "pdflatex -synctex=1 -interaction=nonstopmode -shell-escape -output-directory=" + s + " " + file + ".tex";
+    string str = "pdflatex -synctex=1 -interaction=nonstopmode";
+    str += " -shell-escape -output-directory=" + s + " " + file;
+    str += ".tex > " + s + "pdflatex.log";
     return str;
 }
 
