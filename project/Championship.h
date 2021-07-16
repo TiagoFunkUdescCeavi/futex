@@ -16,6 +16,7 @@ class Championship{
 
     public:
         Championship( string name );
+        string get_name();
         void add_phase( Classification * c );
 
         void process();

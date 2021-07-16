@@ -132,7 +132,7 @@ string Classification::to_latex(){
     string s = c.get_subsection( "Rodada " + std::to_string( this->actual_round + 1 ), false );
     vector< Game * > games = this->rounds[ this->actual_round ]->get_games();
     for( unsigned int i = 0; i < games.size(); i++ ){
-        s += games[ i ]->to_string() + "\n";
+        s += games[ i ]->to_string() + "\\\\\n";
     }
     s += c.get_table_header();
     for( unsigned int i = 0; i < this->equips.size(); i++ ){

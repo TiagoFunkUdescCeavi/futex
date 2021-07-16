@@ -145,7 +145,7 @@ string Equip::to_latex(){
     }else{
         s += std::to_string( previous_position );
     }
-    s += "&" + ajust_size( 3, std::to_string( aproveitamento ), false ) + " %";
+    s += "&" + ajust_size( 3, std::to_string( aproveitamento ), false ) + " \\%";
     
     s += "\t&";
     

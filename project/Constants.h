@@ -6,6 +6,8 @@ using std::string;
 
 class Constants{
     public:
+        string get_latex_file_header( string title );
+        string get_latex_file_footer();
         string get_table_header();
         string get_table_footer();
         string get_section( string s, bool numerable );

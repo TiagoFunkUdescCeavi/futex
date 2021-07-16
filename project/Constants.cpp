@@ -1,10 +1,32 @@
 #include "Constants.h"
 
+string Constants::get_latex_file_header( string title ){
+    string str = "\\documentclass{article}\n";
+    str += "\\usepackage[utf8]{inputenc}\n";
+    str += "\\usepackage[T1]{fontenc}\n";
+    str += "\\usepackage[brazil]{babel}\n";
+    str += "\n";
+    str += "\\setlength{\\parindent}{0cm}\n";
+    str += "\n";
+    str += "\\title{\\textbf{" + title + "}}\n";
+    str += "\\author{}\n";
+    str += "\\date{}\n";
+    str += "\n";
+    str += "\\begin{document}\n";
+    str += "\\maketitle\n";
+    return str;
+}
+
+string Constants::get_latex_file_footer(){
+    string str = "\\end{document}\n";
+    return str;
+}
+
 string Constants::get_table_header(){
     string str = "\\begin{center}\n";
-    str += "\\begin{tabular}{| c | l | c | c | c | c | c | c | c | c | c | c |}\n";
-    str += "\\multicolumn{12}{c}{\\textbf{Classificação ao término da rodada}}\\\\\n";
-    str += "Pos.&Equipe&Pts&J&V&E&D&GP&GC&SG&PA&RES\\\\\n";;
+    str += "\\begin{tabular}{| c | l | c | c | c | c | c | c | c | c | c | c | c |}\n";
+    str += "\\multicolumn{13}{c}{\\textbf{Classificação ao término da rodada}}\\\\\n";
+    str += "Pos.&Equipe&Pts&J&V&E&D&GP&GC&SG&PA&APROV&RES\\\\\n";;
     return str;
 }
 

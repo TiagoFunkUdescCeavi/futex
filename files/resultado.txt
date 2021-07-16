@@ -1,4 +1,18 @@
 
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+
+\setlength{\parindent}{0cm}
+
+\title{\textbf{Copa das Confederações 2013}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
 \subsection*{Rodada 1}
 Brasil 3-0 Japão
 México 1-2 Itália
@@ -89,4 +103,6 @@ Pos.&Equipe&Pts&J&V&E&D&GP&GC&SG&PA&RES\\
 \end{center}
 
 
+
+\end{document}
 

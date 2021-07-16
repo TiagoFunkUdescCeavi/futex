@@ -32,3 +32,9 @@
 *.app
 
 futex
+
+# Latex
+*.aux
+*.log
+*.synctex.gz
+*.pdf

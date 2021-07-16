@@ -7,6 +7,7 @@ using std::endl;
 #include <string>
 using std::string;
 
+#include "Constants.h"
 #include "Championship.h"
 #include "FileProcessor.h"
 #include "StringProcessor.h"
@@ -30,7 +31,9 @@ int main( int argc, char** argv ) {
     try{
         Championship * c = fp->process();
         c->process();
+        f->write( (new Constants())->get_latex_file_header( c->get_name() ), false );
         f->write( c->to_latex(), false );
+        f->write( (new Constants())->get_latex_file_footer(), false );
 
     }catch( exception &ex ){
         cout << ex.what() << endl;
