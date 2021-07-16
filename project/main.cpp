@@ -16,7 +16,7 @@ using std::string;
 int main( int argc, char** argv ) {
 
     if( argc != 2 ){
-        cout << "Entrada esperada: ./futex <input_file>" << endl;
+        cout << (new Constants() )->expected_input() << endl;
         exit( 1 );
     }
 

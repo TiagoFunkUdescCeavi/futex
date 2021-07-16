@@ -34,9 +34,9 @@ bool Phase::insert_equip(Equip* e) {
 bool Phase::insert_game( int round, Game* g ){
     int size = this->rounds.size();
     if( round < 1 || round > size ){
-        throw runtime_error( "insert_game: \"round\" value is invalid: " + std::to_string( round ) + "\n");
+        throw runtime_error( (new Constants() )->round_value_is_invalid( __FILE__, __LINE__, round ));
     }
-    return this->rounds.at( round-1 )->insert_game( g );
+    return this->rounds[ round-1 ]->insert_game( g );
 }
 
 void Phase::inserirCriteriosDesempate(CRITERIOS criterios[] ){
@@ -52,7 +52,7 @@ void Phase::create_new_round(){
 void Phase::process_round(int round){
     int size = this->rounds.size();
     if( round < 1 || round > size ){
-        throw runtime_error( "process_round: \"round\" value is invalid: " + std::to_string( round ) + "\n" );
+        throw runtime_error( (new Constants() )->round_value_is_invalid( __FILE__, __LINE__, round ) );
     }
     
     Game * game = 0;
@@ -100,7 +100,7 @@ void Phase::sort() {
                         diff = this->equips[ i ]->get_wins() - this->equips[ j ]->get_wins();
                         break;
                     default:
-                        throw runtime_error("sort: Critério de desempate não foi encontrado.\n");
+                        throw runtime_error( (new Constants() )->sort_criterion_not_found( __FILE__, __LINE__ ) );
                 }
                 
                 if( diff < 0 ){

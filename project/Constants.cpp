@@ -58,3 +58,39 @@ string Constants::get_latex_comand( string file ){
 string Constants::get_portuguese_acents(){
     return "áéíóúâêôãç";
 }
+
+string Constants::error_on_open_file( string file ){
+    return "Erro ao abrir arquivo:" + file + ".\n";
+}
+
+string Constants::file_is_empty( string file ){
+    return "Arquivo está vazio: " + file + ".\n";
+}
+
+string Constants::command_not_found( int line, string command ){
+    return "Linha " + std::to_string( line ) + " - Comando não encontrado: " + command + ".\n";
+}
+
+string Constants::token_not_found( int line, string command ){
+    string str = "Linha " + std::to_string( line );
+    str += " - Token \':\' não foi encontrado: " + command + ".\n";
+    return str;
+}
+
+string Constants::round_value_is_invalid( string cpp_file, int cpp_file_line, int round_value ){
+    string str = cpp_file + ":";
+    str += std::to_string( cpp_file_line ) + ":";
+    str += "Valor da variável \"rodada\" é inválido: " + std::to_string( round_value ) + ".\n";
+    return str;
+}
+
+string Constants::sort_criterion_not_found( string cpp_file, int cpp_file_line ){
+    string str = cpp_file + ":";
+    str += std::to_string( cpp_file_line ) + ":";
+    str += "Critério de desempate não foi encontrado.\n";
+    return str;
+}
+
+string Constants::expected_input(){
+    return "Entrada esperada: ./futex <input_file>";
+}

@@ -15,6 +15,15 @@ class Constants{
 
         string get_latex_comand( string file );
         string get_portuguese_acents();
+
+        string error_on_open_file( string file );
+        string file_is_empty( string file );
+        string command_not_found( int line, string command );
+        string token_not_found( int line, string command );
+
+        string round_value_is_invalid( string cpp_file, int cpp_file_line, int round_value );
+        string sort_criterion_not_found( string cpp_file, int cpp_file_line );
+        string expected_input();
 };
 
 #endif

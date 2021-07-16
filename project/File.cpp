@@ -6,6 +6,7 @@
 using namespace std;
 
 #include "File.h"
+#include "Constants.h"
 
 File::File(string file_name) {
     this->file_name = file_name;
@@ -21,7 +22,7 @@ void File::write(string s, bool erase ){
     }
     
     if( !arq ){
-        throw runtime_error("Erro ao abrir arquivo:" + this->file_name + "\n");
+        throw runtime_error( (new Constants())->error_on_open_file( this->file_name ) );
     }
     
     arq << s << endl;
@@ -37,7 +38,7 @@ string File::read(){
     arq.open( this->file_name.c_str(), ios::in );
     
     if( !arq ){
-        throw runtime_error("Erro ao abrir arquivo:" + this->file_name + "\n");
+        throw runtime_error( (new Constants())->error_on_open_file( this->file_name ) );
     }
     
     while( !arq.eof() ){
