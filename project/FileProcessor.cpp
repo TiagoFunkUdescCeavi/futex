@@ -87,8 +87,12 @@ void FileProcessor::process_round( string value ){
 
 void FileProcessor::process_game( string value ){
     string* arguments = split( value, ' ' );
+    string home = this->aliases[ arguments[ 0 ] ];
+    string visitor = this->aliases[ arguments[ 1 ] ];
+    this->classification->insert_equip( new Equip( home ) );
+    this->classification->insert_equip( new Equip( visitor ) );
     Game* g = new Game(
-        this->aliases[ arguments[ 0 ] ], this->aliases[ arguments[ 1 ] ], 
+        home, visitor, 
         stoi( arguments[ 2 ] ), stoi( arguments[ 3 ] )
     );
     classification->insert_game( this->actual_round, g );
@@ -100,9 +104,9 @@ void FileProcessor::process_phase( string value ){
         this->championship->add_phase( this->classification );
     }
     classification = new Classification( trim( value ) );
-    for( Map::const_iterator iter = aliases.begin(); iter != aliases.end(); iter++ ){
-        classification->insert_equip( new Equip( iter->second ) );
-    }
+    // for( Map::const_iterator iter = aliases.begin(); iter != aliases.end(); iter++ ){
+    //     classification->insert_equip( new Equip( iter->second ) );
+    // }
     std::cout << "Fase criada: " << value << std::endl;
 }
 

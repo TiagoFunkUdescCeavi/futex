@@ -1,0 +1,38 @@
+nome: Copa das Confederações 2013
+
+alias: bra Brasil
+alias: jap Japão
+alias: mex México
+alias: ita Itália
+alias: esp Espanha
+alias: uru Uruguai
+alias: nig Nigéria
+alias: tai Taiti
+
+fase: Grupo A
+
+rodada: 1
+jogo: bra jap 3 0
+jogo: mex ita 1 2
+
+rodada: 2
+jogo: bra mex 2 0
+jogo: ita jap 4 3
+
+rodada: 3
+jogo: ita bra 2 4
+jogo: jap mex 1 2
+
+fase: Grupo B
+
+rodada: 1
+jogo: esp uru 2 1
+jogo: tai nig 1 6
+
+rodada: 2
+jogo: esp tai 10 0
+jogo: nig uru 1 2
+
+rodada: 3
+jogo: nig esp 0 3
+jogo: uru tai 8 0
