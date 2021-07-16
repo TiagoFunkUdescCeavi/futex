@@ -17,7 +17,7 @@ int count_acents( string s, string acents ){
 }
 
 string ajust_size(int size, string s, bool pos ){
-    int s_size = s.length() - count_acents( s, (new Constants())->get_portuguese_acents() );
+    int s_size = s.length() - count_acents( s, Constants::instance()->get_portuguese_acents() );
     if( size < s_size ){
         return s.substr( 0, size-1 );
     }

@@ -16,7 +16,7 @@ using std::string;
 int main( int argc, char** argv ) {
 
     if( argc != 2 ){
-        cout << (new Constants() )->expected_input() << endl;
+        cout << Constants::instance()->expected_input() << endl;
         exit( 1 );
     }
 
@@ -31,11 +31,11 @@ int main( int argc, char** argv ) {
 
         File* f = new File( output_file );
         f->write( "", true );
-        f->write( (new Constants())->get_latex_file_header( c->get_name() ), false );
+        f->write( Constants::instance()->get_latex_file_header( c->get_name() ), false );
         f->write( c->to_latex(), false );
-        f->write( (new Constants())->get_latex_file_footer(), false );
+        f->write( Constants::instance()->get_latex_file_footer(), false );
 
-        string str = (new Constants())->get_latex_comand( input_file.substr( 0, input_file.find_last_of(".") ) );
+        string str = Constants::instance()->get_latex_comand( input_file.substr( 0, input_file.find_last_of(".") ) );
         system( str.c_str() );
 
     }catch( exception &ex ){

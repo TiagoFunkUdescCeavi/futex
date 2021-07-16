@@ -22,7 +22,7 @@ void File::write(string s, bool erase ){
     }
     
     if( !arq ){
-        throw runtime_error( (new Constants())->error_on_open_file( this->file_name ) );
+        throw runtime_error( Constants::instance()->error_on_open_file( this->file_name ) );
     }
     
     arq << s << endl;
@@ -38,7 +38,7 @@ string File::read(){
     arq.open( this->file_name.c_str(), ios::in );
     
     if( !arq ){
-        throw runtime_error( (new Constants())->error_on_open_file( this->file_name ) );
+        throw runtime_error( Constants::instance()->error_on_open_file( this->file_name ) );
     }
     
     while( !arq.eof() ){

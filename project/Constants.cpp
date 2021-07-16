@@ -1,5 +1,16 @@
 #include "Constants.h"
 
+Constants * Constants::_instance = 0;
+
+Constants::Constants(){}
+
+Constants * Constants::instance(){
+    if( _instance == 0 ){
+        _instance = new Constants();
+    }
+    return _instance;
+}
+
 string Constants::get_latex_file_header( string title ){
     string str = "\\documentclass{article}\n";
     str += "\\usepackage[utf8]{inputenc}\n";

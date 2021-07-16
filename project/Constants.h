@@ -5,7 +5,13 @@
 using std::string;
 
 class Constants{
+    private:
+        static Constants * _instance;
+    protected:
+        Constants();
     public:
+        static Constants * instance();
+
         string get_latex_file_header( string title );
         string get_latex_file_footer();
         string get_table_header();
