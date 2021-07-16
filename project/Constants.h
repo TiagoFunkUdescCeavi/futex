@@ -13,6 +13,7 @@ class Constants{
         string get_section( string s, bool numerable );
         string get_subsection( string s, bool numerable );
 
+        string get_latex_comand( string file );
         string get_portuguese_acents();
 };
 

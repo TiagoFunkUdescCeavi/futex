@@ -38,3 +38,4 @@ futex
 *.log
 *.synctex.gz
 *.pdf
+*.dvi

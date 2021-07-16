@@ -22,8 +22,6 @@ int main( int argc, char** argv ) {
 
     string input_file( argv[ 1 ] );
     string output_file = input_file.substr( 0, input_file.find_last_of(".") ) + ".tex";
-
-    cout << output_file << endl;
     
     FileProcessor* fp = new FileProcessor( input_file );
     
@@ -40,6 +38,9 @@ int main( int argc, char** argv ) {
     }catch( exception &ex ){
         cout << ex.what() << endl;
     }
+
+    string str = (new Constants())->get_latex_comand( input_file.substr( 0, input_file.find_last_of(".") ) );
+    system( str.c_str() );
 
     return 0;
 }

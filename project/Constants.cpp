@@ -49,6 +49,12 @@ string Constants::get_subsection( string s, bool numerable ){
     return str;
 }
 
+string Constants::get_latex_comand( string file ){
+    string s = file.substr( 0, file.find_last_of("/")+1 );
+    string str = "pdflatex -synctex=1 -interaction=nonstopmode -shell-escape -output-directory=" + s + " " + file + ".tex";
+    return str;
+}
+
 string Constants::get_portuguese_acents(){
     return "áéíóúâêôãç";
 }
