@@ -22,6 +22,7 @@ class Classification{
 public:
     
     Classification( string name );
+    string get_name();
     
     bool insert_equip( Equip* e );
     bool insert_game( int round, Game* g );

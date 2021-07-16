@@ -17,6 +17,10 @@ Classification::Classification( string name ) {
     this->criterios[ 3 ] = WINS;
 }
 
+string Classification::get_name(){
+    return this->name;
+}
+
 bool Classification::insert_equip(Equip* e) {
     for( unsigned int i = 0; i < this->equips.size(); i++ ){
         if( e->get_name() == this->equips.at( i )->get_name() ){
