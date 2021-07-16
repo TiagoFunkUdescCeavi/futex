@@ -18,16 +18,18 @@ public:
 
 private:
     const string NAME = "nome";
+    const string ALIAS = "alias";
     const string PHASE = "fase";
     const string ROUND = "rodada";
     const string GAME = "jogo";
-    const string ALIAS = "alias";
+    const string GOAL = "gol";
     
     int actual_line;
     int actual_round;
     string file_name;
     Championship * championship;
-    Phase* classification;
+    Phase* actual_phase;
+    Game * actual_game;
     
     typedef map< string, string > Map;
     Map aliases;
@@ -39,6 +41,7 @@ private:
     void process_phase( string value );
     void process_round( string value );
     void process_game( string value );
+    void process_goal( string value );
 
 
     string * split_command( string command );

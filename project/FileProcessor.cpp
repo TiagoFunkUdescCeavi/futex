@@ -7,6 +7,7 @@
 #include "Phase.h"
 #include "File.h"
 #include "Messenger.h"
+#include "Goal.h"
 
 #include "FileProcessor.h"
 
@@ -34,7 +35,6 @@ Championship * FileProcessor::process() {
         }
     }
     process_line( line );
-    this->championship->add_phase( this->classification );
     
     return this->championship;
 }
@@ -65,6 +65,9 @@ void FileProcessor::process_command( string command, string value ){
     }else if( command == GAME ){
         this->process_game( value );
 
+    }else if( command == GOAL ){
+        this->process_goal( value );
+
     }else{
         throw runtime_error( Messenger::instance()->command_not_found( this->actual_line, command ) );
     }
@@ -83,15 +86,13 @@ void FileProcessor::process_alias( string value ){
 }
 
 void FileProcessor::process_phase( string value ){
-    if( this->classification != NULL ){
-        this->championship->add_phase( this->classification );
-    }
-    classification = new Phase( trim( value ) );
+    this->actual_phase = new Phase( trim( value ) );
+    this->championship->add_phase( this->actual_phase );
     std::cout << "Fase criada: " << value << std::endl;
 }
 
 void FileProcessor::process_round( string value ){
-    this->classification->create_new_round();
+    this->actual_phase->create_new_round();
     this->actual_round = stoi( trim( value ) );
     std::cout << "Nova rodada: " << this->actual_round << std::endl;
 }
@@ -100,11 +101,34 @@ void FileProcessor::process_game( string value ){
     vector< string > arguments = split( value, ' ' );
     string home = this->aliases[ arguments[ 0 ] ];
     string visitor = this->aliases[ arguments[ 1 ] ];
-    this->classification->insert_equip( new Equip( home ) );
-    this->classification->insert_equip( new Equip( visitor ) );
-    Game* g = new Game( home, visitor, stoi( arguments[ 2 ] ), stoi( arguments[ 3 ] ) );
-    this->classification->insert_game( this->actual_round, g );
-    std::cout << "Jogo adicionado: " << g->to_string() << std::endl;
+    this->actual_phase->insert_equip( new Equip( home ) );
+    this->actual_phase->insert_equip( new Equip( visitor ) );
+    this->actual_game = new Game( home, visitor, stoi( arguments[ 2 ] ), stoi( arguments[ 3 ] ) );
+    this->actual_phase->insert_game( this->actual_round, this->actual_game );
+    std::cout << "Jogo adicionado: " << this->actual_game->to_string() << std::endl;
+}
+
+void FileProcessor::process_goal( string value ){
+    vector< string > arguments = split( value, ' ' );
+    string name = arguments[ 0 ];
+    string time = arguments[ 1 ];
+    bool home = arguments[ 2 ] == "h";
+    bool penalty = false;
+    bool own_goal = false;
+    if( arguments.size() == 4 ){
+        if( arguments[ 3 ] == "p" ){
+            penalty = true;
+        }else if( arguments[ 3 ] == "c" ){
+            own_goal = true;
+        }
+    }
+    Goal * g = new Goal( name, time, penalty, own_goal );
+    if( home ){
+        this->actual_game->set_home_goal( g );
+    }else{
+        this->actual_game->set_visitor_goal( g );
+    }
+    std::cout << "Gol adicionado: " << g->to_string() << std::endl;
 }
 
 string * FileProcessor::split_command( string command ){

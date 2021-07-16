@@ -59,9 +59,9 @@ void Phase::process_round(int round){
         for ( unsigned int j = 0; j < equips.size(); j++) {
             equip = this->equips[ j ];
             if( equip->get_name() == game->get_home() ){
-                equip->set_result( game->get_home_goals(), game->get_visitor_goals() );
+                equip->set_result( game->get_qty_home_goals(), game->get_qty_visitor_goals() );
             }else if( equip->get_name() == game->get_visitor() ){
-                equip->set_result( game->get_visitor_goals(), game->get_home_goals() );
+                equip->set_result( game->get_qty_visitor_goals(), game->get_qty_home_goals() );
             }
         }
     }

@@ -13,26 +13,90 @@ fase: Grupo A
 
 rodada: 1
 jogo: bra jap 3 0
+gol: Neymar 3 h
+gol: Paulinho 48 h
+gol: Jô 90+3 h
+
 jogo: mex ita 1 2
+gol: Hernández 34 h p
+gol: Pirlo 27 v
+gol: Balotelli 78 v
 
 rodada: 2
 jogo: bra mex 2 0
+gol: Neymar 9 h
+gol: Jô 90+3 h
+
 jogo: ita jap 4 3
+gol: DeRossi 41 h
+gol: Uchida 50 h c
+gol: Balotelli 52 h p
+gol: Giovinco 86 h
+gol: Honda 21 h p
+gol: Kagawa 33 h
+gol: Okazaki 69 h
 
 rodada: 3
 jogo: ita bra 2 4
+gol: Giaccherini 51 h
+gol: Chiellini 71 h 
+gol: Dante 45+1 v
+gol: Neymar 55 v 
+gol: Fred 66 v 
+gol: fred 89 v 
+
 jogo: jap mex 1 2
+gol: Okazaki 86 h 
+gol: Hernández 54 v 
+gol: Hernández 66 v 
 
 fase: Grupo B
 
 rodada: 1
 jogo: esp uru 2 1
+gol: Pedro 20 h 
+gol: Soldado 32 h 
+gol: Suárez 88 v 
+
 jogo: tai nig 1 6
+gol: Tehau 54 h 
+gol: Vallar 5 v c
+gol: Oduamadi 10 v 
+gol: Oduamadi 26 v 
+gol: Oduamadi 76 v 
+gol: Tehau 69 v c 
+gol: Echiéjilé 80 v 
 
 rodada: 2
 jogo: esp tai 10 0
+gol: Torres 5 h 
+gol: Torres 33 h 
+gol: Torres 57 h 
+gol: Torres 78 h 
+gol: DavidSilva 31 h 
+gol: DavidSilva 89 h 
+gol: Villa 39 h 
+gol: Villa 49 h 
+gol: Villa 64 h 
+gol: Mata 66 h 
+
 jogo: nig uru 1 2
+gol: Mikel 37 h 
+gol: Lugano 19 v 
+gol: Forlán 51 v 
 
 rodada: 3
 jogo: nig esp 0 3
+gol: Alba 3 v 
+gol: Alba 88 v 
+gol: Torres 62 v 
+
 jogo: uru tai 8 0
+gol: Hernández 2 h 
+gol: Hernández 24 h 
+gol: Hernández 45+1 h 
+gol: Hernández 67 h p 
+gol: Pérez 27 h 
+gol: Lodeiro 61 h 
+gol: Suárez 82 h 
+gol: Suárez 90 h 
