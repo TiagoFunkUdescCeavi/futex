@@ -97,7 +97,7 @@ void FileProcessor::process_round( string value ){
 }
 
 void FileProcessor::process_game( string value ){
-    string* arguments = split( value, ' ' );
+    vector< string > arguments = split( value, ' ' );
     string home = this->aliases[ arguments[ 0 ] ];
     string visitor = this->aliases[ arguments[ 1 ] ];
     this->classification->insert_equip( new Equip( home ) );

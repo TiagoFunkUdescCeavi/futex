@@ -7,8 +7,10 @@ using std::string;
 class Messenger{
     private:
         static Messenger * _instance;
+
     protected:
         Messenger();
+        
     public:
         static Messenger * instance();
 

@@ -56,33 +56,21 @@ string trim( string s ){
     return s.substr( begin, end-begin+1 );
 }
 
-string* split( string s, char separator ){
-    int size = 0;
+vector< string > split( string s, char separator ){
     char aux;
-    string* vector = 0;
+    vector< string > vector;
     
     s = trim( s );
     
-    for( unsigned int i = 0; i <= ( s.length() - 1 ); i++) {
-        aux = s[ i ];
-        if( aux == separator ){
-            size++;
-        }
-    }
-    size++;
-    vector = new string[ size ];
-    
-    int count = 0;
     int begin = 0;
     for( unsigned int i = 0; i <= ( s.length() - 1 ); i++) {
         aux = s[ i ];
         if( aux == separator ){
-            vector[ count ] = s.substr( begin, i-begin );
-            count++;
+            vector.push_back( s.substr( begin, i-begin ) );
             begin = i + 1;
         }
     }
-    vector[ count ] = s.substr( s.rfind( separator )+1 );
+    vector.push_back( s.substr( s.rfind( separator )+1 ) );
     
     return vector;
 }
