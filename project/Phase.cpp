@@ -75,27 +75,26 @@ int Phase::get_number_rounds(){
 string Phase::to_string(){
     int size = this->equips.size();
     
-    if( size == 0 ){
-        return "Nenhuma equipe nesta classificação";
-    }
+    if( size == 0 ) return Messenger::instance()->phase_empty();
+
     string s = "";
     for (int i = 0; i < size; i++) {
-        s += std::to_string( i+1 ) + "º" + this->equips.at(i)->to_latex() + '\n';
+        s += std::to_string( i+1 ) + "º" + this->equips[ i ]->to_latex() + '\n';
     }
     return s;
 }
 
 string Phase::to_latex(){
-    string s = Messenger::instance()->get_subsection( "Rodada " + std::to_string( this->actual_round + 1 ), false );
+    string s = Messenger::instance()->latex_subsection( "Rodada " + std::to_string( this->actual_round + 1 ), false );
     vector< Game * > games = this->rounds[ this->actual_round ]->get_games();
     for( unsigned int i = 0; i < games.size(); i++ ){
         s += games[ i ]->to_string() + "\\\\\n";
     }
-    s += Messenger::instance()->get_table_header();
+    s += Messenger::instance()->latex_table_header();
     for( unsigned int i = 0; i < this->equips.size(); i++ ){
         s += std::to_string( i+1 ) + "º" + this->equips[ i ]->to_latex() + '\n';
     }
-    s += Messenger::instance()->get_table_footer();
+    s += Messenger::instance()->latex_table_footer();
     s += "\n";
     return s;
 }

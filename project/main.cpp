@@ -31,11 +31,11 @@ int main( int argc, char** argv ) {
 
         File* f = new File( output_file );
         f->write( "", true );
-        f->write( Messenger::instance()->get_latex_file_header( c->get_name() ), false );
+        f->write( Messenger::instance()->latex_file_header( c->get_name() ), false );
         f->write( c->to_latex(), false );
-        f->write( Messenger::instance()->get_latex_file_footer(), false );
+        f->write( Messenger::instance()->latex_file_footer(), false );
 
-        string str = Messenger::instance()->get_latex_comand( input_file.substr( 0, input_file.find_last_of(".") ) );
+        string str = Messenger::instance()->latex_comand( input_file.substr( 0, input_file.find_last_of(".") ) );
         system( str.c_str() );
 
     }catch( exception &ex ){

@@ -11,7 +11,7 @@ Messenger * Messenger::instance(){
     return _instance;
 }
 
-string Messenger::get_latex_file_header( string title ){
+string Messenger::latex_file_header( string title ){
     string str = "\\documentclass{article}\n";
     str += "\\usepackage[utf8]{inputenc}\n";
     str += "\\usepackage[T1]{fontenc}\n";
@@ -28,12 +28,12 @@ string Messenger::get_latex_file_header( string title ){
     return str;
 }
 
-string Messenger::get_latex_file_footer(){
+string Messenger::latex_file_footer(){
     string str = "\\end{document}\n";
     return str;
 }
 
-string Messenger::get_table_header(){
+string Messenger::latex_table_header(){
     string str = "\\begin{center}\n";
     str += "\\begin{tabular}{| c | l | c | c | c | c | c | c | c | c | c | c | c |}\n";
     str += "\\multicolumn{13}{c}{\\textbf{Classificação ao término da rodada}}\\\\\n";
@@ -41,26 +41,26 @@ string Messenger::get_table_header(){
     return str;
 }
 
-string Messenger::get_table_footer(){
+string Messenger::latex_table_footer(){
     string str = "\\end{tabular}\n\\end{center}\n";
     return str;
 }
 
-string Messenger::get_section( string s, bool numerable ){
+string Messenger::latex_section( string s, bool numerable ){
     string str = "\\section";
     if( !numerable ) str += "*";
     str += "{" + s + "}\n";
     return str;
 }
 
-string Messenger::get_subsection( string s, bool numerable ){
+string Messenger::latex_subsection( string s, bool numerable ){
     string str = "\\subsection";
     if( !numerable ) str += "*";
     str += "{" + s + "}\n";
     return str;
 }
 
-string Messenger::get_latex_comand( string file ){
+string Messenger::latex_comand( string file ){
     string s = file.substr( 0, file.find_last_of("/")+1 );
     string str = "pdflatex -synctex=1 -interaction=nonstopmode";
     str += " -shell-escape -output-directory=" + s + " " + file;
@@ -68,7 +68,7 @@ string Messenger::get_latex_comand( string file ){
     return str;
 }
 
-string Messenger::get_portuguese_acents(){
+string Messenger::portuguese_acents(){
     return "áéíóúâêôãç";
 }
 
@@ -106,4 +106,8 @@ string Messenger::sort_criterion_not_found( string cpp_file, int cpp_file_line )
 
 string Messenger::expected_input(){
     return "Entrada esperada: ./futex <input_file>";
+}
+
+string Messenger::phase_empty(){
+    return "Nenhuma equipe nesta classificação";
 }

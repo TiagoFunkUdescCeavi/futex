@@ -17,6 +17,8 @@
         "ostream": "cpp",
         "sstream": "cpp",
         "tuple": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "cerrno": "cpp",
+        "cstdarg": "cpp"
     }
 }

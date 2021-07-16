@@ -16,7 +16,7 @@ void Championship::add_phase( Phase * c ){
 void Championship::process(){
     this->latex_text = "";
     for( unsigned int i = 0; i < this->phases.size(); i++ ){
-        this->latex_text += Messenger::instance()->get_section( this->phases[i]->get_name(), false );
+        this->latex_text += Messenger::instance()->latex_section( this->phases[i]->get_name(), false );
         for( int j = 0; j < this->phases[ i ]->get_number_rounds(); j++ ){
             this->phases[i]->process_round( j+1 );
             this->latex_text += this->phases[i]->to_latex() + "\n";
