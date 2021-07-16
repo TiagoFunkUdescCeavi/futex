@@ -32,7 +32,6 @@ public:
     void create_new_round();
     void process_round( int round );
     int get_number_rounds();
-    void sort();
     
     string to_string();
     string to_latex();
@@ -48,6 +47,9 @@ private:
     
     CRITERIOS criterios[ NUMERO_CRITERIOS_DESEMPATE ];
 
+    void check_if_round_is_valid( int round );
+
+    void sort();
     int difference_equips( Equip * i, Equip * j );
     void swap_equips( int i, int j );
     void save_previous_position();

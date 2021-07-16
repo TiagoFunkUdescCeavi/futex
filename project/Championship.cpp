@@ -19,7 +19,6 @@ void Championship::process(){
         this->latex_text += Messenger::instance()->get_section( this->phases[i]->get_name(), false );
         for( int j = 0; j < this->phases[ i ]->get_number_rounds(); j++ ){
             this->phases[i]->process_round( j+1 );
-            this->phases[i]->sort();
             this->latex_text += this->phases[i]->to_latex() + "\n";
         }
     }

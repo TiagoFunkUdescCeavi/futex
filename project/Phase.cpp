@@ -32,14 +32,11 @@ bool Phase::insert_equip(Equip* e) {
 }
 
 bool Phase::insert_game( int round, Game* g ){
-    int size = this->rounds.size();
-    if( round < 1 || round > size ){
-        throw runtime_error( Messenger::instance()->round_value_is_invalid( __FILE__, __LINE__, round ));
-    }
+    this->check_if_round_is_valid( round );
     return this->rounds[ round-1 ]->insert_game( g );
 }
 
-void Phase::inserirCriteriosDesempate(CRITERIOS criterios[] ){
+void Phase::inserirCriteriosDesempate( CRITERIOS criterios[] ){
     for( int i = 0; i < NUMERO_CRITERIOS_DESEMPATE; i++){
         this->criterios[ i ] = criterios[ i ];
     }
@@ -50,20 +47,17 @@ void Phase::create_new_round(){
 }
 
 void Phase::process_round(int round){
-    int size = this->rounds.size();
-    if( round < 1 || round > size ){
-        throw runtime_error( Messenger::instance()->round_value_is_invalid( __FILE__, __LINE__, round ) );
-    }
+    this->check_if_round_is_valid( round );
     
     Game * game = 0;
     Equip * equip = 0;
-    vector< Game* > games = this->rounds[ round-1 ]->get_games();
-    this->actual_round = round - 1;;
+    this->actual_round = round - 1;
+    vector< Game* > games = this->rounds[ this->actual_round ]->get_games();
     
     for (unsigned int i = 0; i < games.size(); i++) {
         game = games[ i ];
         for ( unsigned int j = 0; j < equips.size(); j++) {
-            equip = equips[ j ];
+            equip = this->equips[ j ];
             if( equip->get_name() == game->get_home() ){
                 equip->set_result( game->get_home_goals(), game->get_visitor_goals() );
             }else if( equip->get_name() == game->get_visitor() ){
@@ -71,22 +65,11 @@ void Phase::process_round(int round){
             }
         }
     }
-    
+    this->sort();
 }
     
 int Phase::get_number_rounds(){
     return this->rounds.size();
-}
-
-void Phase::sort() {
-    int diff;
-    this->save_previous_position();
-    for (unsigned int i = 0; i < this->equips.size(); i++) {
-        for (unsigned int j = i+1; j < this->equips.size(); j++) {
-            diff = this->difference_equips( this->equips[ i ], this->equips[ j ] );
-            if( diff < 0 ) this->swap_equips( i, j );
-        }
-    }
 }
 
 string Phase::to_string(){
@@ -115,6 +98,24 @@ string Phase::to_latex(){
     s += Messenger::instance()->get_table_footer();
     s += "\n";
     return s;
+}
+
+void Phase::check_if_round_is_valid( int round ){
+    int size = this->rounds.size();
+    if( round < 1 || round > size ){
+        throw runtime_error( Messenger::instance()->round_value_is_invalid( __FILE__, __LINE__, round ) );
+    }
+}
+
+void Phase::sort() {
+    int diff;
+    this->save_previous_position();
+    for (unsigned int i = 0; i < this->equips.size(); i++) {
+        for (unsigned int j = i+1; j < this->equips.size(); j++) {
+            diff = this->difference_equips( this->equips[ i ], this->equips[ j ] );
+            if( diff < 0 ) this->swap_equips( i, j );
+        }
+    }
 }
 
 int Phase::difference_equips( Equip * i, Equip * j ){
