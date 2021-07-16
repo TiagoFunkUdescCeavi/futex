@@ -3,12 +3,12 @@
 #include <iostream>
 #include <cstdlib>
 
-#include "Classification.h"
+#include "Phase.h"
 #include "Constants.h"
 
 using namespace std;
 
-Classification::Classification( string name ) {
+Phase::Phase( string name ) {
     this->name = name;
     this->actual_round = 0;
     this->criterios[ 0 ] = POINTS;
@@ -17,11 +17,11 @@ Classification::Classification( string name ) {
     this->criterios[ 3 ] = WINS;
 }
 
-string Classification::get_name(){
+string Phase::get_name(){
     return this->name;
 }
 
-bool Classification::insert_equip(Equip* e) {
+bool Phase::insert_equip(Equip* e) {
     for( unsigned int i = 0; i < this->equips.size(); i++ ){
         if( e->get_name() == this->equips.at( i )->get_name() ){
             return false;
@@ -31,7 +31,7 @@ bool Classification::insert_equip(Equip* e) {
     return true;
 }
 
-bool Classification::insert_game( int round, Game* g ){
+bool Phase::insert_game( int round, Game* g ){
     int size = this->rounds.size();
     if( round < 1 || round > size ){
         throw runtime_error( "insert_game: \"round\" value is invalid: " + std::to_string( round ) + "\n");
@@ -39,17 +39,17 @@ bool Classification::insert_game( int round, Game* g ){
     return this->rounds.at( round-1 )->insert_game( g );
 }
 
-void Classification::inserirCriteriosDesempate(CRITERIOS criterios[] ){
+void Phase::inserirCriteriosDesempate(CRITERIOS criterios[] ){
     for( int i = 0; i < NUMERO_CRITERIOS_DESEMPATE; i++){
         this->criterios[ i ] = criterios[ i ];
     }
 }
 
-void Classification::create_new_round(){
+void Phase::create_new_round(){
     this->rounds.push_back( new Round() );
 }
 
-void Classification::process_round(int round){
+void Phase::process_round(int round){
     int size = this->rounds.size();
     if( round < 1 || round > size ){
         throw runtime_error( "process_round: \"round\" value is invalid: " + std::to_string( round ) + "\n" );
@@ -74,11 +74,11 @@ void Classification::process_round(int round){
     
 }
     
-int Classification::get_number_rounds(){
+int Phase::get_number_rounds(){
     return this->rounds.size();
 }
 
-void Classification::sort() {
+void Phase::sort() {
     int diff;
     for( unsigned int i = 0; i < this->equips.size(); i++ ){
         this->equips[i]->set_previous_position( i+1 );
@@ -117,7 +117,7 @@ void Classification::sort() {
 
 }
 
-string Classification::to_string(){
+string Phase::to_string(){
     int size = this->equips.size();
     
     if( size == 0 ){
@@ -131,7 +131,7 @@ string Classification::to_string(){
 }
 
 
-string Classification::to_latex(){
+string Phase::to_latex(){
     Constants c;
     string s = c.get_subsection( "Rodada " + std::to_string( this->actual_round + 1 ), false );
     vector< Game * > games = this->rounds[ this->actual_round ]->get_games();

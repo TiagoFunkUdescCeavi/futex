@@ -4,7 +4,7 @@
 #include <exception>
 
 #include "StringProcessor.h"
-#include "Classification.h"
+#include "Phase.h"
 #include "File.h"
 
 #include "FileProcessor.h"
@@ -85,7 +85,7 @@ void FileProcessor::process_phase( string value ){
     if( this->classification != NULL ){
         this->championship->add_phase( this->classification );
     }
-    classification = new Classification( trim( value ) );
+    classification = new Phase( trim( value ) );
     std::cout << "Fase criada: " << value << std::endl;
 }
 

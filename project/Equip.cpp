@@ -4,7 +4,6 @@ using std::string;
 #include "StringProcessor.h"
 
 #include "Equip.h"
-#include "Classification.h"
 
 Equip::Equip(string nome){
     this->name = nome;

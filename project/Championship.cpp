@@ -9,7 +9,7 @@ string Championship::get_name(){
     return this->name;
 }
 
-void Championship::add_phase( Classification * c ){
+void Championship::add_phase( Phase * c ){
     this->phases.push_back( c );
 }
 

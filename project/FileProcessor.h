@@ -7,7 +7,7 @@
 
 using namespace std;
 
-#include "Classification.h"
+#include "Phase.h"
 #include "Championship.h"
 
 class FileProcessor {
@@ -27,7 +27,7 @@ private:
     int actual_round;
     string file_name;
     Championship * championship;
-    Classification* classification;
+    Phase* classification;
     
     typedef map< string, string > Map;
     Map aliases;

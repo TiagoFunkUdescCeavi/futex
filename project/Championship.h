@@ -1,7 +1,7 @@
 #ifndef CHAMPIONSHIP_H
 #define CHAMPIONSHIP_H
 
-#include "Classification.h"
+#include "Phase.h"
 
 #include <string>
 #include <vector>
@@ -12,12 +12,12 @@ class Championship{
     private:
         string name;
         string latex_text;
-        vector< Classification * > phases;
+        vector< Phase * > phases;
 
     public:
         Championship( string name );
         string get_name();
-        void add_phase( Classification * c );
+        void add_phase( Phase * c );
 
         void process();
         string to_latex();

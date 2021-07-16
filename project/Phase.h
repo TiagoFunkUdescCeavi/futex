@@ -1,5 +1,5 @@
-#ifndef CLASSIFICATION_H
-#define CLASSIFICATION_H
+#ifndef PHASE_H
+#define PHASE_H
 
 #include <vector>
 using std::vector;
@@ -18,10 +18,10 @@ enum CRITERIOS{
     WINS
 };
     
-class Classification{
+class Phase{
 public:
     
-    Classification( string name );
+    Phase( string name );
     string get_name();
     
     bool insert_equip( Equip* e );
