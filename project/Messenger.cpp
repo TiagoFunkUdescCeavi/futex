@@ -1,17 +1,17 @@
-#include "Constants.h"
+#include "Messenger.h"
 
-Constants * Constants::_instance = 0;
+Messenger * Messenger::_instance = 0;
 
-Constants::Constants(){}
+Messenger::Messenger(){}
 
-Constants * Constants::instance(){
+Messenger * Messenger::instance(){
     if( _instance == 0 ){
-        _instance = new Constants();
+        _instance = new Messenger();
     }
     return _instance;
 }
 
-string Constants::get_latex_file_header( string title ){
+string Messenger::get_latex_file_header( string title ){
     string str = "\\documentclass{article}\n";
     str += "\\usepackage[utf8]{inputenc}\n";
     str += "\\usepackage[T1]{fontenc}\n";
@@ -28,12 +28,12 @@ string Constants::get_latex_file_header( string title ){
     return str;
 }
 
-string Constants::get_latex_file_footer(){
+string Messenger::get_latex_file_footer(){
     string str = "\\end{document}\n";
     return str;
 }
 
-string Constants::get_table_header(){
+string Messenger::get_table_header(){
     string str = "\\begin{center}\n";
     str += "\\begin{tabular}{| c | l | c | c | c | c | c | c | c | c | c | c | c |}\n";
     str += "\\multicolumn{13}{c}{\\textbf{Classificação ao término da rodada}}\\\\\n";
@@ -41,67 +41,67 @@ string Constants::get_table_header(){
     return str;
 }
 
-string Constants::get_table_footer(){
+string Messenger::get_table_footer(){
     string str = "\\end{tabular}\n\\end{center}\n";
     return str;
 }
 
-string Constants::get_section( string s, bool numerable ){
+string Messenger::get_section( string s, bool numerable ){
     string str = "\\section";
     if( !numerable ) str += "*";
     str += "{" + s + "}\n";
     return str;
 }
 
-string Constants::get_subsection( string s, bool numerable ){
+string Messenger::get_subsection( string s, bool numerable ){
     string str = "\\subsection";
     if( !numerable ) str += "*";
     str += "{" + s + "}\n";
     return str;
 }
 
-string Constants::get_latex_comand( string file ){
+string Messenger::get_latex_comand( string file ){
     string s = file.substr( 0, file.find_last_of("/")+1 );
     string str = "pdflatex -synctex=1 -interaction=nonstopmode -shell-escape -output-directory=" + s + " " + file + ".tex";
     return str;
 }
 
-string Constants::get_portuguese_acents(){
+string Messenger::get_portuguese_acents(){
     return "áéíóúâêôãç";
 }
 
-string Constants::error_on_open_file( string file ){
+string Messenger::error_on_open_file( string file ){
     return "Erro ao abrir arquivo:" + file + ".\n";
 }
 
-string Constants::file_is_empty( string file ){
+string Messenger::file_is_empty( string file ){
     return "Arquivo está vazio: " + file + ".\n";
 }
 
-string Constants::command_not_found( int line, string command ){
+string Messenger::command_not_found( int line, string command ){
     return "Linha " + std::to_string( line ) + " - Comando não encontrado: " + command + ".\n";
 }
 
-string Constants::token_not_found( int line, string command ){
+string Messenger::token_not_found( int line, string command ){
     string str = "Linha " + std::to_string( line );
     str += " - Token \':\' não foi encontrado: " + command + ".\n";
     return str;
 }
 
-string Constants::round_value_is_invalid( string cpp_file, int cpp_file_line, int round_value ){
+string Messenger::round_value_is_invalid( string cpp_file, int cpp_file_line, int round_value ){
     string str = cpp_file + ":";
     str += std::to_string( cpp_file_line ) + ":";
     str += "Valor da variável \"rodada\" é inválido: " + std::to_string( round_value ) + ".\n";
     return str;
 }
 
-string Constants::sort_criterion_not_found( string cpp_file, int cpp_file_line ){
+string Messenger::sort_criterion_not_found( string cpp_file, int cpp_file_line ){
     string str = cpp_file + ":";
     str += std::to_string( cpp_file_line ) + ":";
     str += "Critério de desempate não foi encontrado.\n";
     return str;
 }
 
-string Constants::expected_input(){
+string Messenger::expected_input(){
     return "Entrada esperada: ./futex <input_file>";
 }

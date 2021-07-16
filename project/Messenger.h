@@ -1,16 +1,16 @@
-#ifndef CONSTANTS_H
-#define CONSTANTS_H
+#ifndef MESSENGER_H
+#define MESSENGER_H
 
 #include <string>
 using std::string;
 
-class Constants{
+class Messenger{
     private:
-        static Constants * _instance;
+        static Messenger * _instance;
     protected:
-        Constants();
+        Messenger();
     public:
-        static Constants * instance();
+        static Messenger * instance();
 
         string get_latex_file_header( string title );
         string get_latex_file_footer();

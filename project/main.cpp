@@ -7,7 +7,7 @@ using std::endl;
 #include <string>
 using std::string;
 
-#include "Constants.h"
+#include "Messenger.h"
 #include "Championship.h"
 #include "FileProcessor.h"
 #include "StringProcessor.h"
@@ -16,7 +16,7 @@ using std::string;
 int main( int argc, char** argv ) {
 
     if( argc != 2 ){
-        cout << Constants::instance()->expected_input() << endl;
+        cout << Messenger::instance()->expected_input() << endl;
         exit( 1 );
     }
 
@@ -31,11 +31,11 @@ int main( int argc, char** argv ) {
 
         File* f = new File( output_file );
         f->write( "", true );
-        f->write( Constants::instance()->get_latex_file_header( c->get_name() ), false );
+        f->write( Messenger::instance()->get_latex_file_header( c->get_name() ), false );
         f->write( c->to_latex(), false );
-        f->write( Constants::instance()->get_latex_file_footer(), false );
+        f->write( Messenger::instance()->get_latex_file_footer(), false );
 
-        string str = Constants::instance()->get_latex_comand( input_file.substr( 0, input_file.find_last_of(".") ) );
+        string str = Messenger::instance()->get_latex_comand( input_file.substr( 0, input_file.find_last_of(".") ) );
         system( str.c_str() );
 
     }catch( exception &ex ){

@@ -1,5 +1,5 @@
 #include "Championship.h"
-#include "Constants.h"
+#include "Messenger.h"
 
 Championship::Championship( string name ){
     this->name = name;
@@ -16,7 +16,7 @@ void Championship::add_phase( Phase * c ){
 void Championship::process(){
     this->latex_text = "";
     for( unsigned int i = 0; i < this->phases.size(); i++ ){
-        this->latex_text += Constants::instance()->get_section( this->phases[i]->get_name(), false );
+        this->latex_text += Messenger::instance()->get_section( this->phases[i]->get_name(), false );
         for( int j = 0; j < this->phases[ i ]->get_number_rounds(); j++ ){
             this->phases[i]->process_round( j+1 );
             this->phases[i]->sort();

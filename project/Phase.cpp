@@ -4,7 +4,7 @@
 #include <cstdlib>
 
 #include "Phase.h"
-#include "Constants.h"
+#include "Messenger.h"
 
 using namespace std;
 
@@ -34,7 +34,7 @@ bool Phase::insert_equip(Equip* e) {
 bool Phase::insert_game( int round, Game* g ){
     int size = this->rounds.size();
     if( round < 1 || round > size ){
-        throw runtime_error( Constants::instance()->round_value_is_invalid( __FILE__, __LINE__, round ));
+        throw runtime_error( Messenger::instance()->round_value_is_invalid( __FILE__, __LINE__, round ));
     }
     return this->rounds[ round-1 ]->insert_game( g );
 }
@@ -52,7 +52,7 @@ void Phase::create_new_round(){
 void Phase::process_round(int round){
     int size = this->rounds.size();
     if( round < 1 || round > size ){
-        throw runtime_error( Constants::instance()->round_value_is_invalid( __FILE__, __LINE__, round ) );
+        throw runtime_error( Messenger::instance()->round_value_is_invalid( __FILE__, __LINE__, round ) );
     }
     
     Game * game = 0;
@@ -100,7 +100,7 @@ void Phase::sort() {
                         diff = this->equips[ i ]->get_wins() - this->equips[ j ]->get_wins();
                         break;
                     default:
-                        throw runtime_error( Constants::instance()->sort_criterion_not_found( __FILE__, __LINE__ ) );
+                        throw runtime_error( Messenger::instance()->sort_criterion_not_found( __FILE__, __LINE__ ) );
                 }
                 
                 if( diff < 0 ){
@@ -132,16 +132,16 @@ string Phase::to_string(){
 
 
 string Phase::to_latex(){
-    string s = Constants::instance()->get_subsection( "Rodada " + std::to_string( this->actual_round + 1 ), false );
+    string s = Messenger::instance()->get_subsection( "Rodada " + std::to_string( this->actual_round + 1 ), false );
     vector< Game * > games = this->rounds[ this->actual_round ]->get_games();
     for( unsigned int i = 0; i < games.size(); i++ ){
         s += games[ i ]->to_string() + "\\\\\n";
     }
-    s += Constants::instance()->get_table_header();
+    s += Messenger::instance()->get_table_header();
     for( unsigned int i = 0; i < this->equips.size(); i++ ){
         s += std::to_string( i+1 ) + "º" + this->equips[ i ]->to_latex() + '\n';
     }
-    s += Constants::instance()->get_table_footer();
+    s += Messenger::instance()->get_table_footer();
     s += "\n";
     return s;
 }

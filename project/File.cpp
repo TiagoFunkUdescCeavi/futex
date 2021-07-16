@@ -6,7 +6,7 @@
 using namespace std;
 
 #include "File.h"
-#include "Constants.h"
+#include "Messenger.h"
 
 File::File(string file_name) {
     this->file_name = file_name;
@@ -22,7 +22,7 @@ void File::write(string s, bool erase ){
     }
     
     if( !arq ){
-        throw runtime_error( Constants::instance()->error_on_open_file( this->file_name ) );
+        throw runtime_error( Messenger::instance()->error_on_open_file( this->file_name ) );
     }
     
     arq << s << endl;
@@ -38,7 +38,7 @@ string File::read(){
     arq.open( this->file_name.c_str(), ios::in );
     
     if( !arq ){
-        throw runtime_error( Constants::instance()->error_on_open_file( this->file_name ) );
+        throw runtime_error( Messenger::instance()->error_on_open_file( this->file_name ) );
     }
     
     while( !arq.eof() ){

@@ -6,7 +6,7 @@
 #include "StringProcessor.h"
 #include "Phase.h"
 #include "File.h"
-#include "Constants.h"
+#include "Messenger.h"
 
 #include "FileProcessor.h"
 
@@ -21,7 +21,7 @@ Championship * FileProcessor::process() {
     File* f = new File( file_name );
     
     str = f->read();
-    if( str == "" ) throw runtime_error( Constants::instance()->file_is_empty( this->file_name) );
+    if( str == "" ) throw runtime_error( Messenger::instance()->file_is_empty( this->file_name) );
 
     for (unsigned int i = 0; i < str.length(); i++) {
         aux = str[ i ];
@@ -66,7 +66,7 @@ void FileProcessor::process_command( string command, string value ){
         this->process_game( value );
 
     }else{
-        throw runtime_error( Constants::instance()->command_not_found( this->actual_line, command ) );
+        throw runtime_error( Messenger::instance()->command_not_found( this->actual_line, command ) );
     }
 }
 
@@ -110,7 +110,7 @@ void FileProcessor::process_game( string value ){
 string * FileProcessor::split_command( string command ){
     string * split = new string[2];
     if( command.find( ":" ) == string::npos ){
-        throw runtime_error( Constants::instance()->token_not_found( this->actual_line, command ) );
+        throw runtime_error( Messenger::instance()->token_not_found( this->actual_line, command ) );
     }else{
         split[ 0 ] = trim( command.substr( 0, command.find( ':', 0 ) ) );
         split[ 1 ] = trim( command.substr( command.find( ":" ) + 1 ) );
