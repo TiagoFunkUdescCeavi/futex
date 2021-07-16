@@ -47,6 +47,10 @@ private:
     vector< Round* > rounds;
     
     CRITERIOS criterios[ NUMERO_CRITERIOS_DESEMPATE ];
+
+    int difference_equips( Equip * i, Equip * j );
+    void swap_equips( int i, int j );
+    void save_previous_position();
     
 };
 

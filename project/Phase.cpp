@@ -80,41 +80,13 @@ int Phase::get_number_rounds(){
 
 void Phase::sort() {
     int diff;
-    for( unsigned int i = 0; i < this->equips.size(); i++ ){
-        this->equips[i]->set_previous_position( i+1 );
-    }
+    this->save_previous_position();
     for (unsigned int i = 0; i < this->equips.size(); i++) {
         for (unsigned int j = i+1; j < this->equips.size(); j++) {
-            for (int k = 0; k < this->NUMERO_CRITERIOS_DESEMPATE; k++) {
-                switch( criterios[ k ] ){
-                    case POINTS:
-                        diff = this->equips[ i ]->get_points() - this->equips[ j ]->get_points();
-                        break;
-                    case DIFF_GOALS:
-                        diff = this->equips[ i ]->get_diff_goals() - this->equips[ j ]->get_diff_goals();
-                        break;
-                    case PRO_GOALS:
-                        diff = this->equips[ i ]->get_pro_goals() - this->equips[ j ]->get_pro_goals();
-                        break;
-                    case WINS:
-                        diff = this->equips[ i ]->get_wins() - this->equips[ j ]->get_wins();
-                        break;
-                    default:
-                        throw runtime_error( Messenger::instance()->sort_criterion_not_found( __FILE__, __LINE__ ) );
-                }
-                
-                if( diff < 0 ){
-                    Equip* e = this->equips[ i ];
-                    this->equips[ i ] = this->equips[ j ]; 
-                    this->equips[ j ] = e;
-                    break;
-                }else if( diff > 0 ){
-                    break;
-                }
-            }
+            diff = this->difference_equips( this->equips[ i ], this->equips[ j ] );
+            if( diff < 0 ) this->swap_equips( i, j );
         }
     }
-
 }
 
 string Phase::to_string(){
@@ -130,7 +102,6 @@ string Phase::to_string(){
     return s;
 }
 
-
 string Phase::to_latex(){
     string s = Messenger::instance()->get_subsection( "Rodada " + std::to_string( this->actual_round + 1 ), false );
     vector< Game * > games = this->rounds[ this->actual_round ]->get_games();
@@ -144,4 +115,40 @@ string Phase::to_latex(){
     s += Messenger::instance()->get_table_footer();
     s += "\n";
     return s;
+}
+
+int Phase::difference_equips( Equip * i, Equip * j ){
+    int diff = 0;
+    for (int k = 0; k < this->NUMERO_CRITERIOS_DESEMPATE; k++) {
+        switch( criterios[ k ] ){
+            case POINTS:
+                diff = i->get_points() - j->get_points();
+                break;
+            case DIFF_GOALS:
+                diff = i->get_diff_goals() - j->get_diff_goals();
+                break;
+            case PRO_GOALS:
+                diff = i->get_pro_goals() - j->get_pro_goals();
+                break;
+            case WINS:
+                diff = i->get_wins() - j->get_wins();
+                break;
+            default:
+                throw runtime_error( Messenger::instance()->sort_criterion_not_found( __FILE__, __LINE__ ) );
+        }
+        if( diff != 0 ) break;
+    }
+    return diff;
+}
+
+void Phase::swap_equips( int i, int j ){
+    Equip* e = this->equips[ i ];
+    this->equips[ i ] = this->equips[ j ]; 
+    this->equips[ j ] = e;
+}
+
+void Phase::save_previous_position(){
+    for( unsigned int i = 0; i < this->equips.size(); i++ ){
+        this->equips[i]->set_previous_position( i+1 );
+    }
 }
