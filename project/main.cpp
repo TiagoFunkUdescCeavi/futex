@@ -23,24 +23,24 @@ int main( int argc, char** argv ) {
     string input_file( argv[ 1 ] );
     string output_file = input_file.substr( 0, input_file.find_last_of(".") ) + ".tex";
     
-    FileProcessor* fp = new FileProcessor( input_file );
-    
-    File* f = new File( output_file );
-    
-    f->write( "", true );
     try{
+        FileProcessor* fp = new FileProcessor( input_file );
+
         Championship * c = fp->process();
         c->process();
+
+        File* f = new File( output_file );
+        f->write( "", true );
         f->write( (new Constants())->get_latex_file_header( c->get_name() ), false );
         f->write( c->to_latex(), false );
         f->write( (new Constants())->get_latex_file_footer(), false );
 
+        string str = (new Constants())->get_latex_comand( input_file.substr( 0, input_file.find_last_of(".") ) );
+        system( str.c_str() );
+
     }catch( exception &ex ){
         cout << ex.what() << endl;
     }
-
-    string str = (new Constants())->get_latex_comand( input_file.substr( 0, input_file.find_last_of(".") ) );
-    system( str.c_str() );
 
     return 0;
 }

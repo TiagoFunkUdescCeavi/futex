@@ -20,6 +20,7 @@ Championship * FileProcessor::process() {
     File* f = new File( file_name );
     
     str = f->read();
+    if( str == "" ) throw runtime_error("Arquivo esta vazio: " + file_name + "\n");
 
     for (unsigned int i = 0; i < str.length(); i++) {
         aux = str[ i ];

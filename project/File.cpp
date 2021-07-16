@@ -45,12 +45,7 @@ string File::read(){
         str += charAux;
     }
     
-    if( str.length() == 1 && charAux == -1 ){
-        str = "";
-    }else{
-        str = str.substr( 0, str.length() - 1);
-    }
-    
+    str = str.substr( 0, str.length() - 1);
     arq.close();
     
     return str;
