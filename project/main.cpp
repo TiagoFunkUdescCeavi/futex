@@ -15,13 +15,15 @@ using std::string;
 
 int main( int argc, char** argv ) {
 
-    if( argc != 3 ){
-        cout << "Entrada esperada: ./futex <input_file> <output_file>" << endl;
+    if( argc != 2 ){
+        cout << "Entrada esperada: ./futex <input_file>" << endl;
         exit( 1 );
     }
 
     string input_file( argv[ 1 ] );
-    string output_file( argv[ 2 ] );
+    string output_file = input_file.substr( 0, input_file.find_last_of(".") ) + ".tex";
+
+    cout << output_file << endl;
     
     FileProcessor* fp = new FileProcessor( input_file );
     

@@ -39,4 +39,4 @@ main.o: main.cpp $(H_SOURCE)
 	$(CC) -o $@ $< $(CC_FLAGS)
 
 clean:
-	rm -rf *.o $(PROJ_NAME) *~
+	rm -rf *.o $(PROJ_NAME) *~ ../files/*.aux ../files/*.log ../files/*.synctex.gz ../files/*.pdf
