@@ -7,7 +7,7 @@ using std::string;
 class Goal{
     public:
         Goal( string player, string time, bool penalty, bool own_goal );
-
+        bool operator<( Goal g );
         string to_string();
 
     private:

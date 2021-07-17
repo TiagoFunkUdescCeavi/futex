@@ -32,9 +32,9 @@ gol: DeRossi 41 h
 gol: Uchida 50 h c
 gol: Balotelli 52 h p
 gol: Giovinco 86 h
-gol: Honda 21 h p
-gol: Kagawa 33 h
-gol: Okazaki 69 h
+gol: Honda 21 v p
+gol: Kagawa 33 v
+gol: Okazaki 69 v
 
 rodada: 3
 jogo: ita bra 2 4
@@ -43,7 +43,7 @@ gol: Chiellini 71 h
 gol: Dante 45+1 v
 gol: Neymar 55 v 
 gol: Fred 66 v 
-gol: fred 89 v 
+gol: Fred 89 v 
 
 jogo: jap mex 1 2
 gol: Okazaki 86 h 
