@@ -9,7 +9,19 @@ Goal::Goal( string player, string time, bool penalty, bool own_goal ){
 }
 
 bool Goal::operator<( Goal g ){
-    return this->time < g.time;
+    string h = this->time;
+    if( h.size() == 1 ) h = "0"+h;
+    string v = g.time;
+    if( v.size() == 1 ) v = "0"+v;
+    return h < v;
+}
+
+bool Goal::operator>( Goal g ){
+    string h = this->time;
+    if( h.size() == 1 ) h = "0"+h;
+    string v = g.time;
+    if( v.size() == 1 ) v = "0"+v;
+    return h > v;
 }
 
 string Goal::to_string(){

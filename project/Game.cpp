@@ -48,6 +48,26 @@ string Game::to_string(){
     str += std::to_string( this->qty_home_goals ) + "-";
     str += std::to_string( this->qty_visitor_goals) + " ";
     str += this->visitor +"\\\\\nGols: ";
+
+    for( unsigned int i = 0; i < this->home_goals.size(); i++ ){
+        for( unsigned int j = i+1; j < this->home_goals.size(); j++ ){
+            if( *(this->home_goals[ i ]) > *(this->home_goals[ j ] ) ){
+                Goal * g = this->home_goals[ j ];
+                this->home_goals[ j ] = this->home_goals[ i ];
+                this->home_goals[ i ] = g;
+            }
+        }
+    }
+    for( unsigned int i = 0; i < this->visitor_goals.size(); i++ ){
+        for( unsigned int j = i+1; j < this->visitor_goals.size(); j++ ){
+            if( *(this->visitor_goals[ i ]) > *(this->visitor_goals[ j ] ) ){
+                Goal * g = this->visitor_goals[ i ];
+                this->visitor_goals[ i ] = this->visitor_goals[ j ];
+                this->visitor_goals[ j ] = g;
+            }
+        }
+    }
+
     unsigned int count_h = 0, count_v = 0;
     while( count_h < this->home_goals.size() && count_v < this->visitor_goals.size() ){
         if( *(this->home_goals[ count_h ]) < *(this->visitor_goals[ count_v ]) ){
@@ -69,6 +89,7 @@ string Game::to_string(){
         count_v++;
         str += " (" + std::to_string( count_h ) + "-" + std::to_string( count_v ) + "), ";
     }
+
     str += "\\\\\n";
     return str;
 }
