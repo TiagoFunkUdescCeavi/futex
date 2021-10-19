@@ -28,7 +28,7 @@ gol: Neymar 9 h
 gol: Jô 90+3 h
 
 jogo: ita jap 4 3
-gol: DeRossi 41 h
+gol: De Rossi 41 h
 gol: Uchida 50 h c
 gol: Balotelli 52 h p
 gol: Giovinco 86 h
@@ -73,8 +73,8 @@ gol: Torres 5 h
 gol: Torres 33 h 
 gol: Torres 57 h 
 gol: Torres 78 h 
-gol: DavidSilva 31 h 
-gol: DavidSilva 89 h 
+gol: David Silva 31 h 
+gol: David Silva 89 h 
 gol: Villa 39 h 
 gol: Villa 49 h 
 gol: Villa 64 h 

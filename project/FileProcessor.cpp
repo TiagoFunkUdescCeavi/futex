@@ -98,19 +98,32 @@ void FileProcessor::process_game( string value ){
 }
 
 void FileProcessor::process_goal( string value ){
+    bool home = true, penalty = false, own_goal = false;
     vector< string > arguments = split( value, ' ' );
-    string name = arguments[ 0 ];
-    string time = arguments[ 1 ];
-    bool home = arguments[ 2 ] == "h";
-    bool penalty = false;
-    bool own_goal = false;
-    if( arguments.size() == 4 ){
-        if( arguments[ 3 ] == "p" ){
-            penalty = true;
-        }else if( arguments[ 3 ] == "c" ){
-            own_goal = true;
-        }
+    int actual_position = arguments.size() - 1;
+
+    if( arguments[ actual_position ] == "p" ){
+        penalty = true;
+        actual_position--;
+    }else if( arguments[ actual_position ] == "c" ){
+        own_goal = true;
+        actual_position--;
     }
+
+    if( arguments[ actual_position ] == "v" ){
+        home = false;
+    }else if( arguments[ actual_position ] == "h" ){
+        home = true;
+    }
+    actual_position--;
+
+    string time = arguments[ actual_position ];
+
+    string name = "";
+    for( int i = 0; i < actual_position; i++ ){
+        name += arguments[ i ] + " ";
+    }
+    
     Goal * g = new Goal( name, time, penalty, own_goal );
     if( home ){
         this->actual_game->set_home_goal( g );
