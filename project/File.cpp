@@ -30,9 +30,10 @@ void File::write(string s, bool erase ){
     arq.close();
 }
 
-string File::read(){
+vector< string > File::read(){
     char charAux;
     string str = "";
+    vector< string > vector_str;
     ifstream arq;
     
     arq.open( this->file_name.c_str(), ios::in );
@@ -43,11 +44,17 @@ string File::read(){
     
     while( !arq.eof() ){
         charAux = arq.get();
-        str += charAux;
+        if( charAux == '\n' ){
+            vector_str.push_back( str );
+            str = "";
+        }else{
+            str += charAux;
+        }
     }
-    
     str = str.substr( 0, str.length() - 1);
+    vector_str.push_back( str );
+    
     arq.close();
     
-    return str;
+    return vector_str;
 }

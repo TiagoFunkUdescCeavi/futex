@@ -17,24 +17,13 @@ FileProcessor::FileProcessor( string file_name ) {
 }
 
 Championship * FileProcessor::process() {
-    char aux = ' ';
-    string line = "", str = "";
     File* f = new File( file_name );
-    
-    str = f->read();
-    if( str == "" ) throw runtime_error( Messenger::instance()->file_is_empty( this->file_name) );
+    vector< string > vector_str = f->read();
+    if( vector_str.empty() ) throw runtime_error( Messenger::instance()->file_is_empty( this->file_name) );
 
-    for (unsigned int i = 0; i < str.length(); i++) {
-        aux = str[ i ];
-        if( aux == '\n' || i-1 == str.length() ){
-            process_line( line );
-            line = "";
-            this->actual_line++;
-        }else{
-            line += aux;
-        }
+    for( unsigned int i = 0; i < vector_str.size(); i++ ){
+        process_line( vector_str[ i ] );
     }
-    process_line( line );
     
     return this->championship;
 }
