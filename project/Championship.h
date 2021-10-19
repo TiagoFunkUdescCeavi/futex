@@ -17,7 +17,7 @@ class Championship{
     public:
         Championship( string name );
         string get_name();
-        void add_phase( Phase * c );
+        void add_phase( Phase * p );
 
         void process();
         string to_latex();

@@ -7,7 +7,7 @@
 
 using namespace std;
 
-#include "Phase.h"
+#include "Instance.h"
 #include "Championship.h"
 
 class FileProcessor {
@@ -20,6 +20,7 @@ private:
     const string NAME = "nome";
     const string ALIAS = "alias";
     const string PHASE = "fase";
+    const string INSTANCE = "instancia";
     const string ROUND = "rodada";
     const string GAME = "jogo";
     const string GOAL = "gol";
@@ -29,6 +30,7 @@ private:
     string file_name;
     Championship * championship;
     Phase* actual_phase;
+    Instance* actual_instance;
     Game * actual_game;
     
     typedef map< string, string > Map;
@@ -39,6 +41,7 @@ private:
     void process_name( string value );
     void process_alias( string value );
     void process_phase( string value );
+    void process_instance( string value );
     void process_round( string value );
     void process_game( string value );
     void process_goal( string value );

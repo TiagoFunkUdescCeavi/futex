@@ -4,7 +4,7 @@
 #include <exception>
 
 #include "StringProcessor.h"
-#include "Phase.h"
+#include "Instance.h"
 #include "File.h"
 #include "Messenger.h"
 #include "Goal.h"
@@ -47,6 +47,9 @@ void FileProcessor::process_command( string command, string value ){
 
     }else if( command == PHASE ){
         this->process_phase( value );
+    
+    }else if( command == INSTANCE ){
+        this->process_instance( value );
         
     }else if( command == ROUND ){
         this->process_round( value );
@@ -80,8 +83,14 @@ void FileProcessor::process_phase( string value ){
     std::cout << "Fase criada: " << value << std::endl;
 }
 
+void FileProcessor::process_instance( string value ){
+    this->actual_instance = new Instance( trim( value ) );
+    this->actual_phase->add_instance( this->actual_instance );
+    std::cout << "Instancia criada: " << value << std::endl;
+}
+
 void FileProcessor::process_round( string value ){
-    this->actual_phase->create_new_round();
+    this->actual_instance->create_new_round();
     this->actual_round = stoi( trim( value ) );
     std::cout << "Nova rodada: " << this->actual_round << std::endl;
 }
@@ -90,10 +99,10 @@ void FileProcessor::process_game( string value ){
     vector< string > arguments = split( value, ' ' );
     string home = this->aliases[ arguments[ 0 ] ];
     string visitor = this->aliases[ arguments[ 1 ] ];
-    this->actual_phase->insert_equip( new Equip( home ) );
-    this->actual_phase->insert_equip( new Equip( visitor ) );
+    this->actual_instance->insert_equip( new Equip( home ) );
+    this->actual_instance->insert_equip( new Equip( visitor ) );
     this->actual_game = new Game( home, visitor, stoi( arguments[ 2 ] ), stoi( arguments[ 3 ] ) );
-    this->actual_phase->insert_game( this->actual_round, this->actual_game );
+    this->actual_instance->insert_game( this->actual_round, this->actual_game );
     std::cout << "Jogo adicionado: " << this->actual_game->to_string() << std::endl;
 }
 

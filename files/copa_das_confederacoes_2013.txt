@@ -9,7 +9,9 @@ alias: uru Uruguai
 alias: nig Nigéria
 alias: tai Taiti
 
-fase: Grupo A
+fase: Primeira Fase
+
+instancia: Grupo A
 
 rodada: 1
 jogo: bra jap 3 0
@@ -50,7 +52,7 @@ gol: Okazaki 86 h
 gol: Hernández 54 v 
 gol: Hernández 66 v 
 
-fase: Grupo B
+instancia: Grupo B
 
 rodada: 1
 jogo: esp uru 2 1
